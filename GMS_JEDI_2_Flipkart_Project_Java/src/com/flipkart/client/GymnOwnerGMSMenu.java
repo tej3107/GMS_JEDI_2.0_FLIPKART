@@ -32,6 +32,18 @@ public class GymnOwnerGMSMenu {
 		System.out.print("Enter your Password: ");
 		String password = in.next();
 		User user =new User(username,password,3);
+		
+		GymOwner owner = new GymOwner();
+		owner.setName(name);
+		owner.setMobile(mobile);
+		owner.setEmail(email);
+		owner.setAddress(address);
+		owner.setAadhaarNumber(aadhaarNumber);
+		owner.setPanNumber(panNumber);
+		owner.setGstNumber(gstNumber);
+		ownerService.registerGymOwner(user, owner);
+		
+		
 		gymOwnerActionPage(in,user);
 	}
 	

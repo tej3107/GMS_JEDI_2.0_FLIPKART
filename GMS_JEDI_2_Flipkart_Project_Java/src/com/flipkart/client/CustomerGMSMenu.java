@@ -34,6 +34,15 @@ public class CustomerGMSMenu {
 		System.out.print("Enter your Password: ");
 		String password = in.next();
 		User user =new User(username,password,3);
+
+		Customer customer = new Customer();
+		
+		customer.setName(name);
+		customer.setMobile(mobile);
+		customer.setEmail(email);
+		customer.setAddress(address);
+		
+		customerService.registerCustomer(user, customer);
 		customerActionPage(in,user);
 	}
 	

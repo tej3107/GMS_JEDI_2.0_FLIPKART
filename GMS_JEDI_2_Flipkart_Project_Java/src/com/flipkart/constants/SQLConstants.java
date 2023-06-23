@@ -25,13 +25,27 @@ public class SQLConstants {
 	public static final String SQL_FETCH_OWNER_GYM_DET_QUERY = "Select * From Gymnasium Where GymOwnerId = (?)";
 	public static final String SQL_FETCH_OWNER_APPROVAL_QUERY = "Select Approved From GymOwner Where GymOwnerId = (?)";
 	public static final String SQL_SIZE_GYM_QUERY = "Select Count(*) From Gymnasium";
-	public static final String SQL_INSERT_GYM_QUERY = "Insert Into Gymnasium Values (?,?,?,?,?,?,?)";
+	public static final String SQL_INSERT_GYM_QUERY = "Insert Into Gymnasium Values (?,?,?,?,?,0,?)";
 	public static final String SQL_SIZE_SLOTS_QUERY = "Select Count(*) From Slots";
 	public static final String SQL_INSERT_SLOTS_QUERY = "Insert Into Slots Values (?,?,?,?)";
+	public static final String SQL_SIZE_GYMOWNER_QUERY = "Select Count(*) From GymOwner";
+	public static final String SQL_SIZE_GYMOWNER_REG_QUERY = "Select Count(*) From GymOwnerRegistration";
+	public static final String SQL_REGISTER_GYMOWNER_QUERY = "Insert Into GymOwner Values (?,?,?,?,?,NULL,?,?,?,0)";
+	public static final String SQL_REGISTER_GYMOWNER_REG_QUERY = "Insert Into GymOwnerRegistration Values (?,NULL,NULL,?)";
+	public static final String SQL_REGISTER_GYMOWNER_USER_QUERY = "Insert Into User Values (?,?,?)";
+	
 	
 	public static final String SQL_FETCH_GYM_SLOT_QUERY = "Select * From Slots Where GymnasiumId = (?)";
 	public static final String SQL_SIZE_BOOK_QUERY = "Select Count(*) From BookedSlot";
+	public static final String SQL_SIZE_CUSTOMER_QUERY = "Select Count(*) From Customer";
+	public static final String SQL_SIZE_CUSTOMER_REG_QUERY = "Select Count(*) From CustomerRegistration";
 	public static final String SQL_INSERT_BOOK_QUERY = "Insert Into BookedSlot Values (?,?,?,?)";
+	public static final String SQL_DELETE_BOOK_QUERY = "Update BookedSlot Set SlotDate = -1 Where CustomerId = (?) And SlotId = (?) And SlotDate = (?)";
 	public static final String SQL_COUNT_CURRENT_CAPACITY_QUERY = "Select Count(*) From BookedSlot Where SlotId = (?) AND SlotDate = (?)";
 	public static final String SQL_CHECK_CAPACITY_QUERY = "Select * From Slots Where SlotId = (?)";
+	public static final String SQL_FETCH_MY_BOOKINGS_QUERY = "Select * From BookedSlot Where CustomerId = (?)";
+	public static final String SQL_FETCH_SLOT_DETAILS_QUERY = "Select * From Slots Where SlotId = (?)";
+	public static final String SQL_REGISTER_CUSTOMER_QUERY = "Insert Into Customer Values (?,?,?,?,?, NULL)";
+	public static final String SQL_REGISTER_CUSTOMER_REG_QUERY = "Insert Into CustomerRegistration Values (?,NULL,NULL,?)";
+	public static final String SQL_REGISTER_CUSTOMER_USER_QUERY = "Insert Into User Values (?,?,?)";
 }

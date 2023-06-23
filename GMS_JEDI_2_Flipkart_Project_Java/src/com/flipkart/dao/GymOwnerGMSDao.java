@@ -16,6 +16,80 @@ import com.flipkart.utils.DBUtils;
  * 
  */
 public class GymOwnerGMSDao {
+	
+	
+	
+	public void registerGymOwner(User user, GymOwner owner) {
+		System.out.println("Connecting to database...");
+		
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		
+		try {
+			// Getting owner Id
+			conn = DBUtils.getConnection();
+			stmt = conn.prepareStatement(SQLConstants.SQL_SIZE_GYMOWNER_QUERY);
+		    ResultSet output = stmt.executeQuery();
+		    output.next();
+		    int count = output.getInt(1);
+		    count++;
+		    
+		    if(count <= 9) user.setUserName("GO00" + Integer.toString(count));
+		    else if(count <= 99) user.setUserName("GO0" + Integer.toString(count));
+		    else user.setUserName("GO" + Integer.toString(count));
+		    
+		    
+		    
+		    // Registering in Owner schema
+		    stmt = conn.prepareStatement(SQLConstants.SQL_REGISTER_GYMOWNER_QUERY);
+		    stmt.setString(1, user.getUserName());
+		    stmt.setString(2, owner.getName());
+		    stmt.setString(3, owner.getMobile());
+		    stmt.setString(4, owner.getEmail());
+		    stmt.setString(5, owner.getAddress());
+		    stmt.setString(6, owner.getAadhaarNumber());
+		    stmt.setString(7, owner.getPanNumber());
+		    stmt.setString(8, owner.getGstNumber());
+		    
+		    stmt.executeUpdate();
+		    
+		    
+		    // Getting RegId
+		    conn = DBUtils.getConnection();
+			stmt = conn.prepareStatement(SQLConstants.SQL_SIZE_GYMOWNER_REG_QUERY);
+		    output = stmt.executeQuery();
+		    output.next();
+		    count = output.getInt(1);
+		    count++;
+		    
+		    String regId = new String();
+		    if(count <= 9) regId = ("R00" + Integer.toString(count));
+		    else if(count <= 99) regId = ("R0" + Integer.toString(count));
+		    else regId = ("R" + Integer.toString(count));
+		    
+		    
+		    // Registering in CustomerRegistration Schema
+		    stmt = conn.prepareStatement(SQLConstants.SQL_REGISTER_GYMOWNER_REG_QUERY);
+		    stmt.setString(1, regId);
+		    stmt.setString(2, user.getUserName());
+		    stmt.executeUpdate();
+		    
+		    
+		    // Registering in User Schema
+		    stmt = conn.prepareStatement(SQLConstants.SQL_REGISTER_GYMOWNER_USER_QUERY);
+		    stmt.setString(1, user.getUserName());
+		    stmt.setString(2, user.getPassword());
+		    stmt.setInt(3, 2);
+		    
+		    stmt.executeUpdate();
+	    } catch(SQLException sqlExcep) {
+		       System.out.println(sqlExcep);
+	    } catch(Exception excep) {
+	           excep.printStackTrace();
+	    }
+	}
+	
+	
 	public void fetchOwnerDetails(String userName) {
 		System.out.println("Connecting to database...");
 		

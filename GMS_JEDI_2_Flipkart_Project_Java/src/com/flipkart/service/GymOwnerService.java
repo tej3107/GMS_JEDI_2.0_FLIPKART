@@ -12,6 +12,10 @@ import com.flipkart.dao.GymOwnerGMSDao;
 public class GymOwnerService {
 	GymOwnerGMSDao ownerDBService = new GymOwnerGMSDao();
 	
+	public void registerGymOwner(User user, GymOwner owner) {
+		ownerDBService.registerGymOwner(user, owner);
+	}
+	
 	public void fetchOwnerDetails(String ownerId) {
 		ownerDBService.fetchOwnerDetails(ownerId);
 	}

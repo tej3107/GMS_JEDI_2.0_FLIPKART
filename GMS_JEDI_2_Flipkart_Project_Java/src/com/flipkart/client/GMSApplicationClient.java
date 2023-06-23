@@ -5,6 +5,7 @@ package com.flipkart.client;
 import java.util.*;
 
 import com.flipkart.bean.*;
+import com.flipkart.exception.UserNotApprovedException;
 import com.flipkart.service.*;
 
 /**
@@ -69,7 +70,14 @@ public class GMSApplicationClient {
 		User user = new User(userName, password, role);
 		UserServiceInterface authentication = new UserService();
 		
-		role = authentication.authenticateUser(user);
+		try{ 
+			role = authentication.authenticateUser(user);
+			throw new UserNotApprovedException(user);
+		}catch (UserNotApprovedException e){
+			System.out.println("Exception error");
+			System.out.println(e.getMessage());
+//			System.out.println(e.getMessage());
+		}
 		if(role != 4) System.out.println("\nlogged in Successfully!!!");
 			
 		switch(role) {

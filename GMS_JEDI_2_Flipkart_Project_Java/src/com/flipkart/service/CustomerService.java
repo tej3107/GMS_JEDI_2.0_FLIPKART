@@ -10,6 +10,11 @@ import com.flipkart.dao.*;
  */
 public class CustomerService { 
 	CustomerGMSDao customerDao = new CustomerGMSDao();
+	
+	public void registerCustomer(User user, Customer customer) {
+		customerDao.registerCustomer(user, customer);
+	}
+	
 	public Customer fetchCustomerDetails(String customerId) {
 		return new Customer();
 	}
