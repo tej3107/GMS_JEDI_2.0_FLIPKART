@@ -1,0 +1,56 @@
+/**
+ * 
+ */
+package com.flipkart.bean;
+
+/**
+ * 
+ */
+public class Gymnasium {
+	private String gymId;
+	private String name;
+	private String address;
+	private String totalArea;
+	private String numItem;
+	
+	
+	public String getGymId() {
+		return gymId;
+	}
+	
+	public void setGymId(String gymId) {
+		this.gymId = gymId;
+	}
+	
+	public String getName() {
+		return name;
+	}
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public String getAddress() {
+		return address;
+	}
+	
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	
+	public String getTotalArea() {
+		return totalArea;
+	}
+	
+	public void setTotalArea(String totalArea) {
+		this.totalArea = totalArea;
+	}
+	
+	public String getNumItem() {
+		return numItem;
+	}
+	
+	public void setNumItem(String numItem) {
+		this.numItem = numItem;
+	}
+}

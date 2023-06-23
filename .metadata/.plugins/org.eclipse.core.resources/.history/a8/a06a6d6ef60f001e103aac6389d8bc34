@@ -1,0 +1,31 @@
+/**
+ * 
+ */
+package com.flipkart.service;
+
+import com.flipkart.bean.Gymnasium;
+
+/**
+ * 
+ */
+public class AdminService {
+	public void seePendingRequest() {
+		
+	}
+	
+	public boolean approveOwnerRequest(String requestId) {
+		return true;
+	}
+	
+	public boolean approveGymRequest(String gymId) {
+		return true;
+	}
+	
+	public boolean approveAllOwnerRequest() {
+		return true;
+	}
+	
+	public boolean approveAllGymRequest() {
+		return true;
+	}
+} 
