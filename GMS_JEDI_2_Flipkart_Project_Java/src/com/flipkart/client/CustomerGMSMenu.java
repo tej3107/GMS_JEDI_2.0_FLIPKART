@@ -39,8 +39,8 @@ public class CustomerGMSMenu {
 	
 	
 	public void viewCatalog(Scanner in, User user) {
-		System.out.println("Welcome to FlipFit Gymnasium Application");
-		System.out.println("Menu:-");
+		System.out.println("\nWelcome to FlipFit Gymnasium Application");
+		System.out.println("Book a Slot:\nMenu:-");
 		customerService.fetchGymList();
 		
 		System.out.print("Enter your Gym ID: ");
@@ -78,7 +78,7 @@ public class CustomerGMSMenu {
 			System.out.println("Welcome to FlipFit Gymnasium Application");
 			
 			System.out.println("\nMenu:-");
-			System.out.println("1.View Gyms \n2.View Booked Slots\n3.Exit");
+			System.out.println("1.View Gyms and Book Gym \n2.View Booked Slots\n3.Exit");
 			System.out.print("Enter your choice: ");
 			choice = in.nextInt();
 			
@@ -87,7 +87,7 @@ public class CustomerGMSMenu {
 					viewCatalog(in, user);
 					break;
 				case 2:
-					customerService.bookedSlots(user.getUserName());
+					customerService.bookedSlots(user.getUserName()); //empty functions
 					break;
 				case 3:
 					System.exit(0);
