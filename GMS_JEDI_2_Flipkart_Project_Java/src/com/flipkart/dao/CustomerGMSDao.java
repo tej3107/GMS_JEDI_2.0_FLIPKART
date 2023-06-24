@@ -27,19 +27,19 @@ public class CustomerGMSDao {
 		    output.next();
 		    int count = output.getInt(1);
 		    count++;
+		    count++;
 		    
-		    if(count <= 9) user.setUserName("C00" + Integer.toString(count));
-		    else if(count <= 99) user.setUserName("C0" + Integer.toString(count));
-		    else user.setUserName("C" + Integer.toString(count));
+//		    user.setUserName(Integer.toString(count));
 		    
 		    
 		    // Registering in Customer schema
 		    stmt = conn.prepareStatement(SQLConstants.SQL_REGISTER_CUSTOMER_QUERY);
 		    stmt.setString(1, user.getUserName());
-		    stmt.setString(2, customer.getName());
-		    stmt.setString(3, customer.getMobile());
-		    stmt.setString(4, customer.getEmail());
-		    stmt.setString(5, customer.getAddress());
+		    stmt.setString(2, user.getUserName());
+		    stmt.setString(3, customer.getName());
+		    stmt.setString(4, customer.getMobile());
+		    stmt.setString(5, customer.getEmail());
+		    stmt.setString(6, customer.getAddress());
 		    
 		    stmt.executeUpdate();
 		    
@@ -53,9 +53,7 @@ public class CustomerGMSDao {
 		    count++;
 		    
 		    String regId = new String();
-		    if(count <= 9) regId = ("R00" + Integer.toString(count));
-		    else if(count <= 99) regId = ("R0" + Integer.toString(count));
-		    else regId = ("R" + Integer.toString(count));
+		    regId = (Integer.toString(count));
 		    
 		    // Registering in CustomerRegistration Schema
 		    stmt = conn.prepareStatement(SQLConstants.SQL_REGISTER_CUSTOMER_REG_QUERY);
