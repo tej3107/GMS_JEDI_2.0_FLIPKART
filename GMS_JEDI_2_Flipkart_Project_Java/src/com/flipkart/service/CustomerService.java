@@ -29,10 +29,11 @@ public class CustomerService {
 	}
 	
 	public int bookSlots(String slotId,String customerId) {
-		if(alreadyBooked(slotId,customerId)) {
-			return 0;
-		}else if(isFull(slotId)) {
+		if(isFull(slotId)) {
 			return 1;
+		}
+		else if(alreadyBooked(slotId,customerId)) {
+			return 0;
 		}else {
 			customerDao.bookSlots(slotId, customerId);
 			return 2;
@@ -40,8 +41,8 @@ public class CustomerService {
 	}
 	
 	public boolean alreadyBooked(String slotId,String customerId) {
-		
-		return false;
+		return customerDao.changeGymSlot(slotId,customerId);
+
 	}
 	
 	public boolean isFull(String slotId) {

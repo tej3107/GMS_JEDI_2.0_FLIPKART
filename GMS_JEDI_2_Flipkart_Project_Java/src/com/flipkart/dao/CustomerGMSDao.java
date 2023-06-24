@@ -131,24 +131,19 @@ public class CustomerGMSDao {
 		   
 	    try {
 	    	conn = DBUtils.getConnection();
-		   
-		    stmt = conn.prepareStatement(SQLConstants.SQL_SIZE_BOOK_QUERY);
-		    ResultSet output = stmt.executeQuery();
-		    output.next();
-		    int count = output.getInt(1);
-		    count++;
 		    
 		    stmt = conn.prepareStatement(SQLConstants.SQL_DATE_CHECK_FROM_SLOTID);
 		    stmt.setString(1, slotId);
-		    output = stmt.executeQuery();
+		    ResultSet output = stmt.executeQuery();
 		    output.next();
 		    String date = output.getString(1);
+		    Integer times = output.getInt(2);
 		    
 		    stmt = conn.prepareStatement(SQLConstants.SQL_INSERT_BOOK_QUERY);
-		    stmt.setString(1, Integer.toString(count));
-		    stmt.setString(2, slotId);
-		    stmt.setString(3, customerId);
-		    stmt.setString(4, date);
+		    stmt.setString(1, slotId);
+		    stmt.setString(2, customerId);
+		    stmt.setString(3, date);
+		    stmt.setInt(4, times);
 		    
 		    stmt.executeUpdate();
 		    
@@ -219,6 +214,60 @@ public class CustomerGMSDao {
 	           excep.printStackTrace();
 	    }
 		return;
+	}
+	
+	public boolean changeGymSlot(String slotId,String customerId) {
+		
+		System.out.println("Connecting to database...");
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		
+		try {
+			
+			conn = DBUtils.getConnection();
+		    stmt = conn.prepareStatement(SQLConstants.SQL_FETCH_SLOT_DETAILS_QUERY);
+		    stmt.setString(1, slotId); 
+		    ResultSet output = stmt.executeQuery();
+		    output.next();
+		    String day = output.getString(4);
+		    Integer times = output.getInt(5);
+		    
+		    
+		    stmt = conn.prepareStatement(SQLConstants.SQL_FETCH_BOOK_QUERY_FOR_A_CUST);
+		    stmt.setString(1, customerId); 
+		    stmt.setString(2, day); 
+		    stmt.setInt(3, times); 
+		    output = stmt.executeQuery();
+		    
+		    boolean flag = false;
+		    
+		    while(output.next()){
+		    	flag=true;
+		    	System.out.println("Reaching to delete  - " + Integer.toString(output.getInt(1)));
+		        PreparedStatement preparedStmt = conn.prepareStatement(SQLConstants.SQL_DELETE_QUERY_FOR_CUST_IN_BOOKEDSLOT);
+		        preparedStmt.setString(1, customerId);
+		        preparedStmt.setString(2, day);
+		        preparedStmt.setInt(3, times);
+		        preparedStmt.execute();
+			    
+			    
+			    stmt = conn.prepareStatement(SQLConstants.SQL_INSERT_BOOK_QUERY);
+			    stmt.setString(1, slotId);
+			    stmt.setString(2, customerId);
+			    stmt.setString(3, day);
+			    stmt.setInt(4, times);
+			    
+			    stmt.executeUpdate();
+		        
+		    }
+		    return flag;
+			
+	    } catch(SQLException sqlExcep) {
+		       System.out.println(sqlExcep);
+	    } catch(Exception excep) {
+	           excep.printStackTrace();
+	    }
+		return true;
 	}
 	
 }
