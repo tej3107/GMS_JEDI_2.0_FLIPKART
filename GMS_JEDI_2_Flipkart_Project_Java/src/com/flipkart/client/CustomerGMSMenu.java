@@ -10,18 +10,18 @@ public class CustomerGMSMenu {
 	CustomerService customerService = new CustomerService();
 	
 	public void registerCustomer(Scanner in) {
-		System.out.println("Welcome to FlipFit Gymnasium Application");
+//		System.out.println("Welcome to FlipFit Gymnasium Application");
 		
 		System.out.println("Add Personal Details:-");
-		System.out.print("Enter Username: ");
+		System.out.print("$ Enter Username: ");
 		String username = in.next();
-		System.out.print("Enter your Name: ");
+		System.out.print("$ Enter your Name: ");
 		String name = in.next();
-		System.out.print("Enter your mobile: ");
+		System.out.print("$ Enter your mobile: ");
 		String mobile = in.next();
-		System.out.print("Enter your email: ");
+		System.out.print("$ Enter your email: ");
 		String email = in.next();
-		System.out.print("Enter your address: ");
+		System.out.print("$ Enter your address: ");
 		String address = in.next();
 //		System.out.print("Enter your aadhaarNumber: ");
 //		String aadhaarNumber = in.next();
@@ -31,7 +31,7 @@ public class CustomerGMSMenu {
 //		String DOB = in.next();
 //		System.out.print("Enter your gstNumber: ");
 //		String gstNumber = in.next();
-		System.out.print("Enter your Password: ");
+		System.out.print("$ Enter your Password: ");
 		String password = in.next();
 		User user =new User(username,password,3);
 
@@ -48,17 +48,17 @@ public class CustomerGMSMenu {
 	
 	
 	public void viewCatalog(Scanner in, User user) {
-		System.out.println("\nWelcome to FlipFit Gymnasium Application");
-		System.out.println("Book a Slot:\nMenu:-");
+//		System.out.println("\nWelcome to FlipFit Gymnasium Application");
+		System.out.println("Book a Slot*\nMenu:-");
 		customerService.fetchGymList();
 		
 		// ==========================================================================================================================================
 		
-		System.out.print("Enter your Gym ID: ");
+		System.out.print("$ Enter your Gym ID: ");
 		String gymId = in.next();
 		
 		customerService.fetchAvilableSlots(gymId);
-		System.out.print("Enter your Slot ID: ");
+		System.out.print("$ Enter your Slot ID: ");
 		String slotId = in.next();
 		
 		// ==========================================================================================================================================
@@ -86,11 +86,11 @@ public class CustomerGMSMenu {
 		int choice = 0;
 		
 		while(choice != 3) {
-			System.out.println("Welcome to FlipFit Gymnasium Application");
+//			System.out.println("Welcome to FlipFit Gymnasium Application");
 			
 			System.out.println("\nMenu:-");
-			System.out.println("1.View Gyms and Book Gym \n2.View Booked Slots\n3.Exit");
-			System.out.print("Enter your choice: ");
+			System.out.println("\t1.View Gyms and Book Gym \n\t2.View Booked Slots\n\t3.Exit");
+			System.out.print("$ Enter your choice: ");
 			choice = in.nextInt();
 			
 			switch (choice) {
@@ -101,7 +101,6 @@ public class CustomerGMSMenu {
 					customerService.bookedSlots(user.getUserName()); //empty functions
 					break;
 				case 3:
-					System.exit(0);
 					break;
 				default:
 					System.out.println("Incorrect choice!!! Please try again!!!");

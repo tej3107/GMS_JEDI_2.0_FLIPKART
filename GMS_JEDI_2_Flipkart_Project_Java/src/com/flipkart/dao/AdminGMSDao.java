@@ -15,7 +15,7 @@ public class AdminGMSDao {
 	 */
    
    public void fetchGymOwnerDetails() {
-	   System.out.println("Connecting to database...");
+//	   System.out.println("Connecting to database...");
 	   
 	   Connection conn = null;
 	   PreparedStatement stmt = null;
@@ -27,7 +27,7 @@ public class AdminGMSDao {
 		   ResultSet output = stmt.executeQuery();
 		   
 		   while(output.next()) {
-			   System.out.println("\tId - " + output.getString(1) + "; Name - " + output.getString(2) + " ;\n");
+			   System.out.println("\t" + output.getString(1) + " \t " + output.getString(2) + "");
 		   }
 	   } catch(SQLException sqlExcep) {
 		      System.out.println(sqlExcep);
@@ -39,7 +39,7 @@ public class AdminGMSDao {
    
 
    public void fetchGymnasiumDetails() {
-	   System.out.println("Connecting to database...");
+//	   System.out.println("Connecting to database...");
 	   
 	   Connection conn = null;
 	   PreparedStatement stmt = null;
@@ -51,7 +51,7 @@ public class AdminGMSDao {
 		   ResultSet output = stmt.executeQuery();
 		   
 		   while(output.next()) {
-			   System.out.println("\tId - " + output.getString(1) + "; Name - " + output.getString(2) + " ;\n");
+			   System.out.println("\t" + output.getString(1) + " \t " + output.getString(2) + "");
 		   }
 	   } catch(SQLException sqlExcep) {
 		      System.out.println(sqlExcep);
@@ -63,7 +63,7 @@ public class AdminGMSDao {
    
 
    public void fetchPedningGymOwnerRequests() {
-	   System.out.println("Connecting to database...");
+//	   System.out.println("Connecting to database...");
 	   
 	   Connection conn = null;
 	   PreparedStatement stmt = null;
@@ -75,7 +75,7 @@ public class AdminGMSDao {
 		   ResultSet output = stmt.executeQuery();
 		   
 		   while(output.next()) {
-			   System.out.println("\tId - " + output.getString(1) + "; Name - " + output.getString(2) + " ;\n");
+			   System.out.println("\t" + output.getString(1) + " \t " + output.getString(2) + " ");
 		   }
 	   } catch(SQLException sqlExcep) {
 		      System.out.println(sqlExcep);
@@ -87,7 +87,7 @@ public class AdminGMSDao {
    
    
    public void fetchPendingGymnasiumRequest() {
-	   System.out.println("Connecting to database...");
+//	   System.out.println("Connecting to database...");
 	   
 	   Connection conn = null;
 	   PreparedStatement stmt = null;
@@ -99,7 +99,7 @@ public class AdminGMSDao {
 		   ResultSet output = stmt.executeQuery();
 		   
 		   while(output.next()) {
-			   System.out.println("\tId - " + output.getString(1) + "; Name - " + output.getString(2) + " ;\n");
+			   System.out.println("\t" + output.getString(1) + " \t " + output.getString(2) + " ");
 		   }
 	   } catch(SQLException sqlExcep) {
 		      System.out.println(sqlExcep);
@@ -111,7 +111,7 @@ public class AdminGMSDao {
    
    
    public void updateAllPendingGymOwnerRequests() {
-	   System.out.println("Connecting to database...");
+//	   System.out.println("Connecting to database...");
 	   
 	   Connection conn = null;
 	   PreparedStatement stmt = null;
@@ -131,7 +131,7 @@ public class AdminGMSDao {
    
    
    public void updateAllPendingGymnasiumRequests() {
-	   System.out.println("Connecting to database...");
+//	   System.out.println("Connecting to database...");
 	   
 	   Connection conn = null;
 	   PreparedStatement stmt = null;
@@ -151,7 +151,7 @@ public class AdminGMSDao {
    
    
    public void updateSingleGymOwnerRequests(String id) {
-	   System.out.println("Connecting to database...");
+//	   System.out.println("Connecting to database...");
 	   
 	   Connection conn = null;
 	   PreparedStatement stmt = null;
@@ -172,14 +172,13 @@ public class AdminGMSDao {
    
    
    public void updateSingleGymnasiumRequests(String id) {
-	   System.out.println("Connecting to database...");
+//	   System.out.println("Connecting to database...");
 	   
 	   Connection conn = null;
 	   PreparedStatement stmt = null;
 	   
 	   try {
 		   conn = DBUtils.getConnection();
-		   String sql = "Update Gymnasium Set Approved = 1 Where GymnasiumId = (?)";
 		   
 		   stmt = conn.prepareStatement(SQLConstants.SQL_APPR_SING_GYM_REQ_QUERY);
 		   stmt.setString(1, id);
@@ -190,4 +189,24 @@ public class AdminGMSDao {
 	      excep.printStackTrace();
 	   } 
    }
+   
+   public void unApproveGymOwner(String gymOwnerId) {
+//	   System.out.println("Connecting to database...");
+	   
+	   Connection conn = null;
+	   PreparedStatement stmt = null;
+	   
+	   try {
+		   conn = DBUtils.getConnection();
+		   
+		   stmt = conn.prepareStatement(SQLConstants.SQL_UNAPPR_SING_GYM_REQ_QUERY);
+		   stmt.setString(1, gymOwnerId);
+		   stmt.executeUpdate();
+	   } catch(SQLException sqlExcep) {
+		      System.out.println(sqlExcep);
+	   } catch(Exception excep) {
+	      excep.printStackTrace();
+	   }
+   }
+   
 }

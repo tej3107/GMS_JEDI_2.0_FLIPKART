@@ -22,7 +22,7 @@ public class UserGMSDao {
 		   
    public int authenticateUser(String userName, String password) {
 	   int exitCode = 4;
-	   System.out.println("Connecting to database...");
+//	   System.out.println("Connecting to database...");
 	   
 	   Connection conn = null;
 	   PreparedStatement stmt = null;

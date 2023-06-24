@@ -35,47 +35,64 @@ public class AdminGMSMenu {
 		AdminGMSInterface adminService = new AdminGMSService();
 		
 		int choice = 0;
-		while(choice != 7) {
+		while(choice != 10) {
 			System.out.println("\nMenu:-");
 			System.out.println(
-					"\t1.View Gym Owner pending requests \n"
-					+ "\t2.View Gymnasiums pending requests \n"
-					+ "\t3.Approve Gym Owner request \n"
-					+ "\t4.Approve Gymnasium request \n"
-					+ "\t5.Approve all Gym Owner requests \n"
-					+ "\t6.Approve all Gymnasium requests \n"
-					+ "\t7.RETURN \n");
+					"\t1.View All Gym Owner\n"
+					+ "\t2.View All Gymnasius\n"
+					+ "\t3.View Gym Owner pending requests \n"
+					+ "\t4.View Gymnasiums pending requests \n"
+					+ "\t5.Approve Gym Owner request \n"
+					+ "\t6.Approve Gymnasium request \n"
+					+ "\t7.Approve all Gym Owner requests \n"
+					+ "\t8.Approve all Gymnasium requests \n"
+					+ "\t9.Block a Gym Owner\n"
+					+ "\t10.RETURN \n");
 			
-			System.out.print("Enter your choice: ");
+			System.out.print("$ Enter your choice: ");
 			choice = in.nextInt();
 			
 			switch (choice) {
 			// Case statements
-//			case 1:
-//				adminService.seeAllGymOwner();
-//				break;
-//			case 2:
-//				adminService.seeAllGyms();
-//				break;
 			case 1:
-				adminService.seePendingGymOwnerRequest();
+				System.out.println("\n\tID\tGymOwner Name");
+				adminService.seeAllGymOwner();
 				break;
 			case 2:
-				adminService.seePendingGymRequest();
+				System.out.println("\n\tID\tGymnasium Name");
+				adminService.seeAllGyms();
 				break;
 			case 3:
-				approveGymOwner(in, adminService);
+				System.out.println("\n\tID\tGymOwner Name");
+				adminService.seePendingGymOwnerRequest();
 				break;
 			case 4:
-				approveGym(in, adminService);
+				System.out.println("\n\tID\tGymnasium Name");
+				adminService.seePendingGymRequest();
 				break;
 			case 5:
-				adminService.approveAllOwnerRequest();
-				break;	
+				System.out.println("\n\tID\tGymOwner Name");
+				adminService.seePendingGymOwnerRequest();
+				approveGymOwner(in, adminService);
+				break;
 			case 6:
-				adminService.approveAllGymRequest();
+				System.out.println("\n\tID\tGymnasium Name");
+				adminService.seePendingGymRequest();
+				approveGym(in, adminService);
 				break;
 			case 7:
+				adminService.approveAllOwnerRequest();
+				break;	
+			case 8:
+				adminService.approveAllGymRequest();
+				break;
+			case 9:
+				adminService.seeAllGymOwner();
+				System.out.println("$ Enter Gym Owner Id to Block:   ");
+				String gynOwnerId = in.next();
+				adminService.blockGymOwner(gynOwnerId);
+				break;
+			case 10:
 				System.out.println("Exit!!");
 				break;
 			// Default case statement

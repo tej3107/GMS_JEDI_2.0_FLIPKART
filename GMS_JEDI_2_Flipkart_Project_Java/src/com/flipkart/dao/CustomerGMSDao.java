@@ -14,7 +14,7 @@ public class CustomerGMSDao {
 	
 	
 	public void registerCustomer(User user, Customer customer) {
-		System.out.println("Connecting to database...");
+//		System.out.println("Connecting to database...");
 		
 		Connection conn = null;
 		PreparedStatement stmt = null;
@@ -77,7 +77,7 @@ public class CustomerGMSDao {
 	}
 	
 	public void fetchGymList() {
-		System.out.println("Connecting to database...");
+//		System.out.println("Connecting to database...");
 		
 		Connection conn = null;
 		PreparedStatement stmt = null;
@@ -87,8 +87,9 @@ public class CustomerGMSDao {
 		    stmt = conn.prepareStatement(SQLConstants.SQL_FETCH_ALL_GYM_QUERY);
 	
 		    ResultSet output = stmt.executeQuery();
+		    System.out.println("\tGymID\tName\tAddress");
 		    while(output.next()) {
-		    	System.out.println(output.getString(1) + " " + output.getString(2) + " " + output.getString(3));
+		    	System.out.println("\t "+output.getString(1) + "\t " + output.getString(2) + "\t " + output.getString(3));
 		    }
 	    } catch(SQLException sqlExcep) {
 		       System.out.println(sqlExcep);
@@ -98,7 +99,7 @@ public class CustomerGMSDao {
 	}
 	
 	public void fetchSlotList(String gymId) {
-		System.out.println("Connecting to database...");
+//		System.out.println("Connecting to database...");
 		
 		Connection conn = null;
 		PreparedStatement stmt = null;
@@ -109,10 +110,11 @@ public class CustomerGMSDao {
 		    stmt.setString(1, gymId); 
 		    ResultSet output = stmt.executeQuery();
 //		    System.out.println(output);
+		    System.out.println("\tSlotID\tGymnasiumID\tAddress\tDay\ttime");
 		    while(output.next()) {
-		    	System.out.println("SoltID - "+ output.getString(1) + " : Gymnasium Id - " 
-		    			+ output.getString(2) + " : Capacity - " + output.getString(3) + " : Day - " 
-		    			+ output.getString(4) +" : Slot Time - " + output.getString(5)+":00hrs");
+		    	System.out.println("\t "+ output.getString(1) + " \t " 
+		    			+ output.getString(2) + "\t " 
+		    			+ output.getString(4) +"\t " + output.getString(5)+":00hrs");
 		    }
 	    } catch(SQLException sqlExcep) {
 		       System.out.println(sqlExcep);
@@ -122,7 +124,7 @@ public class CustomerGMSDao {
 	}
 	
 	public void bookSlots(String slotId,String customerId) {
-		System.out.println("Connecting to database...");
+//		System.out.println("Connecting to database...");
 		   
 		Connection conn = null;
 		PreparedStatement stmt = null;
@@ -155,7 +157,7 @@ public class CustomerGMSDao {
 	}
 	
 	public boolean isFull(String slotId) {
-		System.out.println("Connecting to database...");
+//		System.out.println("Connecting to database...");
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		
@@ -183,7 +185,7 @@ public class CustomerGMSDao {
 	}
 	
 	public void bookedGymList(String custId) {
-		System.out.println("Connecting to database...");
+//		System.out.println("Connecting to database...");
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		
@@ -200,9 +202,12 @@ public class CustomerGMSDao {
 			    ResultSet out = stmt.executeQuery();
 			    out.next();
 			    
-			    System.out.println("SoltID - "+ out.getString(1) + " : Gymnasium Id - " 
-		    			+ out.getString(2) + " : Capacity - " + out.getString(3) + " : Day - " 
-		    			+ out.getString(4) +" : Slot Time - " + out.getString(5)+":00hrs");
+			    System.out.println("\tSlotID\tGymnasiumID\tAddress\tDay\ttime");
+			    while(output.next()) {
+			    	System.out.println("\t "+ output.getString(1) + " \t " 
+			    			+ output.getString(2) + "\t " 
+			    			+ output.getString(4) +"\t " + output.getString(5)+":00hrs");
+			    }
 		    }
 		    
 		    
@@ -216,7 +221,7 @@ public class CustomerGMSDao {
 	
 	public boolean changeGymSlot(String slotId,String customerId) {
 		
-		System.out.println("Connecting to database...");
+//		System.out.println("Connecting to database...");
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		
@@ -241,7 +246,7 @@ public class CustomerGMSDao {
 		    
 		    while(output.next()){
 		    	flag=true;
-		    	System.out.println("Reaching to delete  - " + Integer.toString(output.getInt(1)));
+//		    	System.out.println("Reaching to delete  - " + Integer.toString(output.getInt(1)));
 		        PreparedStatement preparedStmt = conn.prepareStatement(SQLConstants.SQL_DELETE_QUERY_FOR_CUST_IN_BOOKEDSLOT);
 		        preparedStmt.setString(1, customerId);
 		        preparedStmt.setString(2, day);

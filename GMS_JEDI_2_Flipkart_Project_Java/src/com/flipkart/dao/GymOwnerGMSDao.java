@@ -20,7 +20,7 @@ public class GymOwnerGMSDao {
 	
 	
 	public void registerGymOwner(User user, GymOwner owner) {
-		System.out.println("Connecting to database...");
+//		System.out.println("Connecting to database...");
 		
 		Connection conn = null;
 		PreparedStatement stmt = null;
@@ -34,9 +34,7 @@ public class GymOwnerGMSDao {
 		    int count = output.getInt(1);
 		    count++;
 		    
-		    if(count <= 9) user.setUserName("GO00" + Integer.toString(count));
-		    else if(count <= 99) user.setUserName("GO0" + Integer.toString(count));
-		    else user.setUserName("GO" + Integer.toString(count));
+		    user.setUserName(Integer.toString(count));
 		    
 		    
 		    
@@ -63,9 +61,7 @@ public class GymOwnerGMSDao {
 		    count++;
 		    
 		    String regId = new String();
-		    if(count <= 9) regId = ("R00" + Integer.toString(count));
-		    else if(count <= 99) regId = ("R0" + Integer.toString(count));
-		    else regId = ("R" + Integer.toString(count));
+		    regId = (Integer.toString(count));
 		    
 		    
 		    // Registering in CustomerRegistration Schema
@@ -91,7 +87,7 @@ public class GymOwnerGMSDao {
 	
 	
 	public void fetchOwnerDetails(String userName) {
-		System.out.println("Connecting to database...");
+//		System.out.println("Connecting to database...");
 		
 		Connection conn = null;
 		PreparedStatement stmt = null;
@@ -103,8 +99,9 @@ public class GymOwnerGMSDao {
 		    stmt.setString(1, userName); 
 	
 		    ResultSet output = stmt.executeQuery();
+		    System.out.println("\tID\tGymOwner Name");
 		    if(output.next()) {
-		    	System.out.println("\tId - "+output.getString(1) + " ; User Name - " + output.getString(2));
+		    	System.out.println("\t"+output.getString(1) + "\t " + output.getString(2));
 		    }
 	    } catch(SQLException sqlExcep) {
 		       System.out.println(sqlExcep);
@@ -114,7 +111,7 @@ public class GymOwnerGMSDao {
 	}
 	
 	public void fetchMyGyms(String userName) {
-		System.out.println("Connecting to database...");
+//		System.out.println("Connecting to database...");
 		   
 		Connection conn = null;
 		PreparedStatement stmt = null;
@@ -126,8 +123,9 @@ public class GymOwnerGMSDao {
 		    stmt.setString(1, userName); 
 	
 		    ResultSet output = stmt.executeQuery();
+		    System.out.println("\tID\tGymnasium Name");
 		    while(output.next()) {
-		    	System.out.println("\tId - "+output.getString(1) + " ; User Name - " + output.getString(2));
+		    	System.out.println("\t"+output.getString(1) + "\t " + output.getString(2));
 		    }
 	    } catch(SQLException sqlExcep) {
 		       System.out.println(sqlExcep);
@@ -137,7 +135,7 @@ public class GymOwnerGMSDao {
 	}
 	
 	public boolean isOwnerApproved(String userName) {
-		System.out.println("Connecting to database...");
+//		System.out.println("Connecting to database...");
 		   
 		Connection conn = null;
 		PreparedStatement stmt = null;
@@ -161,7 +159,7 @@ public class GymOwnerGMSDao {
 	
 	
 	public void addGymDetails(Gymnasium gym, ArrayList<Integer> slotAvailable, int capacity) {
-		System.out.println("Connecting to database...");
+//		System.out.println("Connecting to database...");
 		   
 		Connection conn = null;
 		PreparedStatement stmt = null;

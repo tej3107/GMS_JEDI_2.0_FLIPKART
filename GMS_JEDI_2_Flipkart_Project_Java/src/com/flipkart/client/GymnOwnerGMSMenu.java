@@ -11,25 +11,25 @@ public class GymnOwnerGMSMenu {
 	GymOwnerService ownerService = new GymOwnerService();
 	
 	public void registerGymOwner(Scanner in) {
-		System.out.println("Welcome to FlipFit Gymnasium Application");
+//		System.out.println("Welcome to FlipFit Gymnasium Application");
 		System.out.println("Please Enter your Details:-");
-		System.out.print("Enter Username: ");
+		System.out.print("$ Enter Username: ");
 		String username = in.next();
-		System.out.print("Enter your Name: ");
+		System.out.print("$ Enter your Name: ");
 		String name = in.next();
-		System.out.print("Enter your mobile: ");
+		System.out.print("$ Enter your mobile: ");
 		String mobile = in.next();
-		System.out.print("Enter your email: ");
+		System.out.print("$ Enter your email: ");
 		String email = in.next();
-		System.out.print("Enter your address: ");
+		System.out.print("$ Enter your address: ");
 		String address = in.next();
-		System.out.print("Enter your aadhaarNumber: ");
+		System.out.print("$ Enter your aadhaarNumber: ");
 		String aadhaarNumber = in.next();
-		System.out.print("Enter your panNumber: ");
+		System.out.print("$ Enter your panNumber: ");
 		String panNumber = in.next();
-		System.out.print("Enter your DOB: ");
+		System.out.print("$ Enter your DOB: ");
 		String DOB = in.next();
-		System.out.print("Enter your gstNumber: ");
+		System.out.print("$ Enter your gstNumber: ");
 		String gstNumber = in.next();
 		System.out.print("Enter your Password: ");
 		String password = in.next();
@@ -60,24 +60,24 @@ public class GymnOwnerGMSMenu {
 	public void registerGym(Scanner in, String ownerId) {
 		Gymnasium gym = new Gymnasium();
 		
-		System.out.print("  Gym Name: ");
+		System.out.print("$  Gym Name: ");
 		String name = in.next();
 		
-		System.out.print("  Address: ");
+		System.out.print("$  Address: ");
 		in.nextLine();
 		String address = in.nextLine();
 		
-		System.out.print("  Area: ");
+		System.out.print("$  Area: ");
 		double area = in.nextInt();
 		
-		System.out.print("  Number of Machines: ");
+		System.out.print("$  Number of Machines: ");
 		int numItem = in.nextInt();
 		
-		System.out.print("Enter capacity of slot: ");
+		System.out.print("$ Enter capacity of slot: ");
 		int capacity = in.nextInt();
 		
 		// ==========================================================================================================================================
-		System.out.println("Enter time slot in sequence giving space \n(Railways time zone, No character allowed: )");
+		System.out.println("$ Enter time slot in sequence giving space (Railways time zone, No character allowed): ");
 		
 		String timeline = in.nextLine();
 		timeline = in.nextLine();
@@ -101,7 +101,7 @@ public class GymnOwnerGMSMenu {
 	}
 
 	public void gymOwnerActionPage(Scanner in, User user) {
-		System.out.println("Welcome to FlipFit Gymnasium Application");
+//		System.out.println("Welcome to FlipFit Gymnasium Application");
 		int choice = 0;
 		
 		if(!ownerService.isOwnerApproved(user.getUserName())) {
@@ -110,12 +110,12 @@ public class GymnOwnerGMSMenu {
 		}
 		
 		while(choice != 4) {
-			System.out.println("Menu:-");
-			System.out.println("1.Get Details \n2.Add Gym \n3.View My Gyms \n4.Return");
+			System.out.println("\nMenu:-");
+			System.out.println("\t1.Get Details \n\t2.Add Gym \n\t3.View My Gyms \n\t4.Return");
 			
 			System.out.print("Enter your choice: ");
 			choice = in.nextInt();
-			
+			System.out.println("\n");
 			switch (choice) {
 				// Case statements	
 				case 1:

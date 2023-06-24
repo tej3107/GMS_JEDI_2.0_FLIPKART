@@ -18,76 +18,81 @@ public class GMSApplicationClient {
 	 */
 	public static void main(String args[]) {
 		System.out.println("\nWelcome to FlipFit Gymnasium Application");
-		System.out.println("\nMenu:-");
-		System.out.println("1.Login \n2.GymOwner Registration \n3.Customer Registration \n4.Exit\n");
-		
-		System.out.print("Enter your choice: ");
 		Scanner in = new Scanner(System.in);
-		int choice = in.nextInt();
+		int choice = 1;
 		
-		switch (choice) {
-		case 1:
-			openLoginMenu(in);
-			break;
+		while(choice!=4) {
+		
+			System.out.println("\nMenu:-");
+			System.out.println("\t1.Login \n\t2.GymOwner Registration \n\t3.Customer Registration \n\t4.Exit\n");
 			
-		case 2:
-			GymnOwnerGMSMenu owner = new GymnOwnerGMSMenu();
-			owner.registerGymOwner(in);
-			break;
+			System.out.print("$ Enter your choice: ");
+			choice = in.nextInt();
 			
-		case 3:
-			CustomerGMSMenu customer = new CustomerGMSMenu();
-			customer.registerCustomer(in);
-			break;
 			
-//		case 4:
-//			System.out.println("Sorry! This feature is not supported currently.\nInconveneience caused is deeply regretted.");
-//			break;
-			
-		case 4:
-			System.exit(0);
-			break;
-			
-		default:
-			System.out.println("Invalid Credentials");
+			switch (choice) {
+			case 1:
+				openLoginMenu(in);
+				break;
+				
+			case 2:
+				GymnOwnerGMSMenu owner = new GymnOwnerGMSMenu();
+				owner.registerGymOwner(in);
+				break;
+				
+			case 3:
+				CustomerGMSMenu customer = new CustomerGMSMenu();
+				customer.registerCustomer(in);
+				break;
+				
+			case 4:
+				System.exit(0);
+				break;
+				
+			default:
+				System.out.println("Invalid Credentials");
+			}
+		
 		}
 		in.close();
 	}
 
 	
 	public static void openLoginMenu(Scanner in) {
-		System.out.println("\nWelcome to FlipFit Gymnasium Application");
+//		System.out.println("\n\nWelcome to FlipFit Gymnasium Application");
 		
-		System.out.println("\nMenu:-");
-		System.out.println("E\nnter your login credentials:-");
+		System.out.println("\nEnter your login credentials:-");
 		
-		System.out.print("UserId: ");
+		System.out.print("$ UserId: ");
 		String userName = in.next();
 		
-		System.out.print("Password: ");
+		System.out.print("$ Password: ");
 		String password = in.next();
 		
 		int role = 0; // Zero is a dummy value here
 		User user = new User(userName, password, role);
 		UserServiceInterface authentication = new UserService();
 		
-		try{ 
-			role = authentication.authenticateUser(user);
-			throw new UserNotApprovedException(user);
-		}catch (UserNotApprovedException e){
-			System.out.println("Exception error");
-			System.out.println(e.getMessage());
+//		try{ 
+		role = authentication.authenticateUser(user);
+//			throw new UserNotApprovedException(user);
+//		}catch (UserNotApprovedException e){
+//			System.out.println("Exception error");
 //			System.out.println(e.getMessage());
-		}
-		if(role != 4) System.out.println("\nlogged in Successfully!!!");
+////			System.out.println(e.getMessage());
+//		}
+		if(role != 4) System.out.println("\nlogged in Successfully!!!\n\n");
+		else {return;}
 		
 		LocalDate localDate = LocalDate.now();
 
-		System.out.println("localDate.getYear(): " + localDate.getYear());
-		System.out.println("localDate.getMonth(): " + localDate.getMonth());
-		System.out.println("localDate.getDayOfWeek(): " + localDate.getDayOfWeek());
-		System.out.println("localDate.getDayOfMonth(): " + localDate.getDayOfMonth());
-		System.out.println("localDate.getDayOfYear(): " + localDate.getDayOfYear());
+//		System.out.println("localDate.getYear(): " + localDate.getYear());
+//		System.out.println("localDate.getMonth(): " + localDate.getMonth());
+//		System.out.println("localDate.getDayOfWeek(): " + localDate.getDayOfWeek());
+//		System.out.println("localDate.getDayOfMonth(): " + localDate.getDayOfMonth());
+//		System.out.println("localDate.getDayOfYear(): " + localDate.getDayOfYear());
+		
+		System.out.println(localDate.getDayOfMonth()+"/"+localDate.getMonth()+"/"+localDate.getYear());
 		
 		System.out.println("Hello!!"+userName+"Welocome to GMS");
 		

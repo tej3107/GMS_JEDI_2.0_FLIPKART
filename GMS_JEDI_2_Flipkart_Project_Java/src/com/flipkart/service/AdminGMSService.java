@@ -16,8 +16,6 @@ public class AdminGMSService implements AdminGMSInterface{
 	AdminGMSDao adminDBService = new AdminGMSDao();
 	
 	public AdminGMSService() {
-		
-		
 //		seeAllGyms();
 	}
 	
@@ -56,5 +54,9 @@ public class AdminGMSService implements AdminGMSInterface{
 	public boolean approveAllGymRequest() {
 		adminDBService.updateAllPendingGymnasiumRequests();
 		return true;
+	}
+	
+	public void blockGymOwner(String gynOwnerId) {
+		adminDBService.unApproveGymOwner(gynOwnerId);
 	}
 } 

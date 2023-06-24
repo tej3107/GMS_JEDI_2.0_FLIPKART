@@ -22,4 +22,6 @@ public interface AdminGMSInterface {
 	public boolean approveSingleGymRequest(String gymId);
 	
 	public boolean approveAllGymRequest();
+	
+	public void blockGymOwner(String gynOwnerId);
 }
