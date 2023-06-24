@@ -24,7 +24,7 @@ public class GymOwnerService {
 		ownerDBService.fetchMyGyms(ownerId);
 	}
 	
-	public void addGymDetails(Gymnasium gym, List<Boolean> slotAvailable, int capacity) {
+	public void addGymDetails(Gymnasium gym, ArrayList<Integer> slotAvailable, int capacity) {
 		ownerDBService.addGymDetails(gym, slotAvailable, capacity);
 	}
 	

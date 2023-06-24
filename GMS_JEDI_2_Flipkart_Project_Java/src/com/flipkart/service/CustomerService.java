@@ -28,23 +28,24 @@ public class CustomerService {
 		customerDao.fetchSlotList(gymId);
 	}
 	
-	public int bookSlots(String slotId,String customerId,int date) {
-		if(alreadyBooked(slotId,customerId,date)) {
+	public int bookSlots(String slotId,String customerId) {
+		if(alreadyBooked(slotId,customerId)) {
 			return 0;
-		}else if(isFull(slotId,date)) {
+		}else if(isFull(slotId)) {
 			return 1;
 		}else {
-			customerDao.bookSlots(slotId, customerId, date);
+			customerDao.bookSlots(slotId, customerId);
 			return 2;
 		}
 	}
 	
-	public boolean alreadyBooked(String slotId,String customerId,int date) {
+	public boolean alreadyBooked(String slotId,String customerId) {
+		
 		return false;
 	}
 	
-	public boolean isFull(String slotId,int date) {
-		return customerDao.isFull(slotId, date);
+	public boolean isFull(String slotId) {
+		return customerDao.isFull(slotId);
 	}
 	
 	public boolean bookSlot(String slotId,String customerId,int date) {
@@ -52,6 +53,7 @@ public class CustomerService {
 	}
 	
 	public void bookedSlots(String customerId) {
+		customerDao.bookedGymList(customerId);
 		return ;
 	}
 }

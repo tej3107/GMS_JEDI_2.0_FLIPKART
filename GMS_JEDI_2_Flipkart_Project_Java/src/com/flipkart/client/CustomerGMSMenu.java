@@ -61,12 +61,9 @@ public class CustomerGMSMenu {
 		System.out.print("Enter your Slot ID: ");
 		String slotId = in.next();
 		
-		System.out.print("Enter your Date: ");
-		int date = in.nextInt();
-		
 		// ==========================================================================================================================================
 		
-		int response = customerService.bookSlots(slotId, user.getUserName(), date);
+		int response = customerService.bookSlots(slotId, user.getUserName());
 		switch (response) {
 			case 0:
 				System.out.println("Changed your slot time with new gym loaction");

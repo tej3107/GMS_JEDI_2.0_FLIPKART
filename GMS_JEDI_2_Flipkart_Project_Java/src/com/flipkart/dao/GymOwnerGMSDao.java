@@ -160,7 +160,7 @@ public class GymOwnerGMSDao {
 	}
 	
 	
-	public void addGymDetails(Gymnasium gym, List<Boolean> slotAvailable, int capacity) {
+	public void addGymDetails(Gymnasium gym, ArrayList<Integer> slotAvailable, int capacity) {
 		System.out.println("Connecting to database...");
 		   
 		Connection conn = null;
@@ -175,9 +175,9 @@ public class GymOwnerGMSDao {
 		    int count = output.getInt(1);
 		    count++;
 		    
-		    if(count <= 9) gym.setGymId("TEJ_GYM" + Integer.toString(count));
-		    else if(count <= 99) gym.setGymId("TEJ_GYM" + Integer.toString(count));
-		    else gym.setGymId("TEJ_GYM" + Integer.toString(count));
+		    if(count <= 9) gym.setGymId(Integer.toString(count));
+		    else if(count <= 99) gym.setGymId(Integer.toString(count));
+		    else gym.setGymId(Integer.toString(count));
 		    
 		    stmt = conn.prepareStatement(SQLConstants.SQL_INSERT_GYM_QUERY);
 		    stmt.setString(1, gym.getGymId());
@@ -196,38 +196,43 @@ public class GymOwnerGMSDao {
 	           excep.printStackTrace();
 	    }
 	    
+	    List<String> days=new ArrayList<String>();
+	    days.add("Monday");days.add("Tuesday");days.add("Wednesday");days.add("Thursday");
+	    days.add("Friday");days.add("Saturday");days.add("Sunday");
 	    
-	    for(int i = 0; i < slotAvailable.size(); i++) {
-	    	if(slotAvailable.get(i)) {
-		    	try {
-			    	conn = DBUtils.getConnection();
-				   
+	    
+	    for (String i : days) {
+	    	for (Integer j : slotAvailable) {
+	    		try {
+	    			conn = DBUtils.getConnection();
+					   
 				    stmt = conn.prepareStatement(SQLConstants.SQL_SIZE_SLOTS_QUERY);
 				    ResultSet output = stmt.executeQuery();
 				    output.next();
 				    int count = output.getInt(1);
 				    count++;
 				    
-				    String slotId;
-				    if(count <= 9) slotId = "S00" + Integer.toString(count);
-				    else if(count <= 99) slotId = "S0" + Integer.toString(count);
-				    else slotId = "S" + Integer.toString(count);
+				    String slotId = Integer.toString(count);
 				    
 				    stmt = conn.prepareStatement(SQLConstants.SQL_INSERT_SLOTS_QUERY);
 				    stmt.setString(1, slotId);
-				    stmt.setInt(2, capacity);
-				    stmt.setInt(3, i);
-				    stmt.setString(4, gym.getGymId());
+				    stmt.setString(2, gym.getGymId());
+				    stmt.setInt(3, capacity);
+				    stmt.setString(4, i);
+				    stmt.setInt(5, j);
 				    
 				    stmt.executeUpdate();
 				    
-			    } catch(SQLException sqlExcep) {
+				    
+				    
+	    		}catch(SQLException sqlExcep) {
 				       System.out.println(sqlExcep);
 			    } catch(Exception excep) {
 			           excep.printStackTrace();
 			    }
-	    	}
-	    }
+	        }
+        }
+	    
 	    
 	    return;
 	}

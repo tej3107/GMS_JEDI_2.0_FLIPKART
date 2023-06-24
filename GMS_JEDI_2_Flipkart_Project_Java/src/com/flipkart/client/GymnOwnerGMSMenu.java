@@ -1,5 +1,7 @@
 package com.flipkart.client;
 import com.flipkart.bean.*;
+import java.util.StringTokenizer;  
+
 import java.util.*;
 import java.util.Scanner;
 import com.flipkart.service.*;
@@ -75,20 +77,18 @@ public class GymnOwnerGMSMenu {
 		int capacity = in.nextInt();
 		
 		// ==========================================================================================================================================
-		System.out.println("Registerd. \n Your slots are 6-8 am and 6-8 pm with capacity of "+String.valueOf(capacity)+ ".\n");
+		System.out.println("Enter time slot in sequence giving space \n(Railways time zone, No character allowed: )");
 		
-		List<Boolean> slotAvailable = new ArrayList<Boolean>();
+		String timeline = in.nextLine();
+		timeline = in.nextLine();
 		
-		slotAvailable.add(new Boolean(true));
+		ArrayList<Integer> slotAvailable = new ArrayList<Integer>();
 		
-		
-		
-		slotAvailable.add(new Boolean(false));
-		
-		slotAvailable.add(new Boolean(false));
-		
-		slotAvailable.add(new Boolean(true));
-		
+		StringTokenizer st = new StringTokenizer(timeline);  
+	     while (st.hasMoreTokens()) { 
+	         slotAvailable.add(Integer.parseInt(st.nextToken()));  
+	     }  
+	     
 		// ==========================================================================================================================================
 		
 		gym.setOwnerId(ownerId);
