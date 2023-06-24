@@ -85,7 +85,7 @@ public class AdminGMSDao {
    }
    
    
-
+   
    public void fetchPendingGymnasiumRequest() {
 	   System.out.println("Connecting to database...");
 	   

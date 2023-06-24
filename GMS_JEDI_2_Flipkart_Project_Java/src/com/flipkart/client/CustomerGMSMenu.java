@@ -52,6 +52,8 @@ public class CustomerGMSMenu {
 		System.out.println("Book a Slot:\nMenu:-");
 		customerService.fetchGymList();
 		
+		// ==========================================================================================================================================
+		
 		System.out.print("Enter your Gym ID: ");
 		String gymId = in.next();
 		
@@ -61,6 +63,8 @@ public class CustomerGMSMenu {
 		
 		System.out.print("Enter your Date: ");
 		int date = in.nextInt();
+		
+		// ==========================================================================================================================================
 		
 		int response = customerService.bookSlots(slotId, user.getUserName(), date);
 		switch (response) {
@@ -77,6 +81,7 @@ public class CustomerGMSMenu {
 			default:
 				System.out.println("Incorrect choice!!! Please try again!!!");
 		}
+		
 	}
 
 	

@@ -2,6 +2,7 @@
  * 
  */
 package com.flipkart.client;
+import java.time.LocalDate;
 import java.util.*;
 
 import com.flipkart.bean.*;
@@ -79,6 +80,17 @@ public class GMSApplicationClient {
 //			System.out.println(e.getMessage());
 		}
 		if(role != 4) System.out.println("\nlogged in Successfully!!!");
+		
+		LocalDate localDate = LocalDate.now();
+
+		System.out.println("localDate.getYear(): " + localDate.getYear());
+		System.out.println("localDate.getMonth(): " + localDate.getMonth());
+		System.out.println("localDate.getDayOfWeek(): " + localDate.getDayOfWeek());
+		System.out.println("localDate.getDayOfMonth(): " + localDate.getDayOfMonth());
+		System.out.println("localDate.getDayOfYear(): " + localDate.getDayOfYear());
+		
+		System.out.println("Hello!!"+userName+"Welocome to GMS");
+		
 			
 		switch(role) {
 			case 1: 

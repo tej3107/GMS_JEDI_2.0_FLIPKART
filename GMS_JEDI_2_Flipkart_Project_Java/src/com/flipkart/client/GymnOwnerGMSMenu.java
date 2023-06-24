@@ -74,7 +74,7 @@ public class GymnOwnerGMSMenu {
 		System.out.print("Enter capacity of slot: ");
 		int capacity = in.nextInt();
 		
-		
+		// ==========================================================================================================================================
 		System.out.println("Registerd. \n Your slots are 6-8 am and 6-8 pm with capacity of "+String.valueOf(capacity)+ ".\n");
 		
 		List<Boolean> slotAvailable = new ArrayList<Boolean>();
@@ -89,6 +89,7 @@ public class GymnOwnerGMSMenu {
 		
 		slotAvailable.add(new Boolean(true));
 		
+		// ==========================================================================================================================================
 		
 		gym.setOwnerId(ownerId);
 		gym.setName(name);
@@ -126,7 +127,6 @@ public class GymnOwnerGMSMenu {
 				case 3:
 					fetchMyGyms(user.getUserName());
 					break;
-				// Default case statement
 				case 4:
 					break;
 				default:
