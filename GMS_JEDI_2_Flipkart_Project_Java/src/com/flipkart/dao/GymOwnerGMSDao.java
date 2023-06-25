@@ -40,7 +40,7 @@ public class GymOwnerGMSDao {
 		    int count = output.getInt(1);
 		    count++;
 		    
-		    user.setUserName(Integer.toString(count));
+//		    user.setUserName(Integer.toString(count));
 		    
 		    
 		    
@@ -197,9 +197,7 @@ public class GymOwnerGMSDao {
 		    int count = output.getInt(1);
 		    count++;
 		    
-		    if(count <= 9) gym.setGymId(Integer.toString(count));
-		    else if(count <= 99) gym.setGymId(Integer.toString(count));
-		    else gym.setGymId(Integer.toString(count));
+		    gym.setGymId(Integer.toString(count));
 		    
 		    stmt = conn.prepareStatement(SQLConstants.SQL_INSERT_GYM_QUERY);
 		    stmt.setString(1, gym.getGymId());
