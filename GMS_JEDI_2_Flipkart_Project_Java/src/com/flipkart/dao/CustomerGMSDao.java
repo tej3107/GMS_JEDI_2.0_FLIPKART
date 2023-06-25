@@ -131,11 +131,11 @@ public class CustomerGMSDao {
 		    stmt.setString(1, gymId); 
 		    ResultSet output = stmt.executeQuery();
 //		    System.out.println(output);
-		    System.out.println("\tSlotID\tGymnasiumID\tAddress\tDay\ttime");
+		    System.out.println("\tSlotID\tGymID\tDay\ttime");
 		    while(output.next()) {
 		    	System.out.println("\t "+ output.getString(1) + " \t " 
 		    			+ output.getString(2) + "\t " 
-		    			+ output.getString(4) +"\t " + output.getString(5)+":00hrs");
+		    			+ output.getString(4) +"    " + output.getString(5)+":00hrs");
 		    }
 	    } catch(SQLException sqlExcep) {
 //		       System.out.println(sqlExcep);
@@ -247,15 +247,15 @@ public class CustomerGMSDao {
 		    while(output.next()) {
 		    	String slotId= output.getString(2);
 		    	stmt = conn.prepareStatement(SQLConstants.SQL_FETCH_SLOT_DETAILS_QUERY);
-			    stmt.setString(1, slotId); 
+			    stmt.setString(1, custId); 
 			    ResultSet out = stmt.executeQuery();
 			    out.next();
 			    
-			    System.out.println("\tSlotID\tGymnasiumID\tAddress\tDay\ttime");
+			    System.out.println("\tSlotID\tGymID\tDay\ttime");
 			    while(output.next()) {
 			    	System.out.println("\t "+ output.getString(1) + " \t " 
 			    			+ output.getString(2) + "\t " 
-			    			+ output.getString(4) +"\t " + output.getString(5)+":00hrs");
+			    			+ output.getString(4) +"    " + output.getString(5)+":00hrs");
 			    }
 		    }
 		    
