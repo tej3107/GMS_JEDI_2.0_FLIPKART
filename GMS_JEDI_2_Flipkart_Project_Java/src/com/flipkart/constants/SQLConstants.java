@@ -17,7 +17,8 @@ public class SQLConstants {
 	public static final String SQL_FETCH_PENDING_GYM_REQ_QUERY = "Select * From Gymnasium Where Approved = 0";
 	public static final String SQL_APPR_SING_OWNER_REQ_QUERY = "Update GymOwner Set Approved = 1 Where GymOwnerId = (?)";
 	public static final String SQL_APPR_SING_GYM_REQ_QUERY = "Update Gymnasium Set Approved = 1 Where GymnasiumId = (?)";
-	public static final String SQL_UNAPPR_SING_GYM_REQ_QUERY = "Update Gymnasium Set Approved = 0 Where GymnasiumId = (?)";
+	public static final String SQL_UNAPPR_SING_GYM_REQ_QUERY = "Update Gymnasium Set Approved = 0 Where GymOwnerId = (?)";
+	public static final String SQL_UNAPPR_SING_OWNER_REQ_QUERY = "Update GymOwner Set Approved = 0 Where GymOwnerId = (?)";
 	public static final String SQL_APPR_ALL_OWNER_QUERY = "Update GymOwner Set Approved = 1";
 	public static final String SQL_APPR_ALL_GYM_QUERY = "Update Gymnasium Set Approved = 1";
 	

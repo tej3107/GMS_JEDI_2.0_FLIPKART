@@ -27,12 +27,13 @@ public class AdminGMSService implements AdminGMSInterface{
 		adminDBService.fetchGymnasiumDetails();
 	}
 	
-	public void seePendingGymOwnerRequest() {
-		adminDBService.fetchPedningGymOwnerRequests();
+	public boolean seePendingGymOwnerRequest() {
+		return adminDBService.fetchPedningGymOwnerRequests();
+		
 	}
 	
-	public void seePendingGymRequest() {
-		adminDBService.fetchPendingGymnasiumRequest();
+	public boolean seePendingGymRequest() {
+		return adminDBService.fetchPendingGymnasiumRequest();
 	}
 	
 	public boolean approveSingleOwnerRequest(String requestId) {

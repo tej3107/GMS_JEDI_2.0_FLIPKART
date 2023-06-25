@@ -79,7 +79,7 @@ public class GymOwnerGMSDao {
 		    
 		    stmt.executeUpdate();
 	    } catch(SQLException sqlExcep) {
-		       System.out.println(sqlExcep);
+//		       System.out.println(sqlExcep);
 	    } catch(Exception excep) {
 	           excep.printStackTrace();
 	    }
@@ -104,7 +104,7 @@ public class GymOwnerGMSDao {
 		    	System.out.println("\t"+output.getString(1) + "\t " + output.getString(2));
 		    }
 	    } catch(SQLException sqlExcep) {
-		       System.out.println(sqlExcep);
+//		       System.out.println(sqlExcep);
 	    } catch(Exception excep) {
 	           excep.printStackTrace();
 	    }
@@ -128,7 +128,7 @@ public class GymOwnerGMSDao {
 		    	System.out.println("\t"+output.getString(1) + "\t " + output.getString(2));
 		    }
 	    } catch(SQLException sqlExcep) {
-		       System.out.println(sqlExcep);
+//		       System.out.println(sqlExcep);
 	    } catch(Exception excep) {
 	           excep.printStackTrace();
 	    }
@@ -149,7 +149,7 @@ public class GymOwnerGMSDao {
 		    ResultSet output = stmt.executeQuery();
 		    if(output.next()) return output.getBoolean(1);
 	    } catch(SQLException sqlExcep) {
-		       System.out.println(sqlExcep);
+//		       System.out.println(sqlExcep);
 	    } catch(Exception excep) {
 	           excep.printStackTrace();
 	    }
@@ -189,7 +189,7 @@ public class GymOwnerGMSDao {
 		    stmt.executeUpdate();
 		    
 	    } catch(SQLException sqlExcep) {
-		       System.out.println(sqlExcep);
+//		       System.out.println(sqlExcep);
 	    } catch(Exception excep) {
 	           excep.printStackTrace();
 	    }
@@ -224,7 +224,7 @@ public class GymOwnerGMSDao {
 				    
 				    
 	    		}catch(SQLException sqlExcep) {
-				       System.out.println(sqlExcep);
+//				       System.out.println(sqlExcep);
 			    } catch(Exception excep) {
 			           excep.printStackTrace();
 			    }

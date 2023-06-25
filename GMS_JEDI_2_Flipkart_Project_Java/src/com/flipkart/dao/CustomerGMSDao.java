@@ -70,7 +70,7 @@ public class CustomerGMSDao {
 		    
 		    stmt.executeUpdate();
 	    } catch(SQLException sqlExcep) {
-		       System.out.println(sqlExcep);
+//		       System.out.println(sqlExcep);
 	    } catch(Exception excep) {
 	           excep.printStackTrace();
 	    }
@@ -92,7 +92,7 @@ public class CustomerGMSDao {
 		    	System.out.println("\t "+output.getString(1) + "\t " + output.getString(2) + "\t " + output.getString(3));
 		    }
 	    } catch(SQLException sqlExcep) {
-		       System.out.println(sqlExcep);
+//		       System.out.println(sqlExcep);
 	    } catch(Exception excep) {
 	           excep.printStackTrace();
 	    }
@@ -117,7 +117,7 @@ public class CustomerGMSDao {
 		    			+ output.getString(4) +"\t " + output.getString(5)+":00hrs");
 		    }
 	    } catch(SQLException sqlExcep) {
-		       System.out.println(sqlExcep);
+//		       System.out.println(sqlExcep);
 	    } catch(Exception excep) {
 	           excep.printStackTrace();
 	    }
@@ -148,7 +148,7 @@ public class CustomerGMSDao {
 		    stmt.executeUpdate();
 		    
 	    } catch(SQLException sqlExcep) {
-		       System.out.println(sqlExcep);
+//		       System.out.println(sqlExcep);
 	    } catch(Exception excep) {
 	           excep.printStackTrace();
 	    }
@@ -177,7 +177,7 @@ public class CustomerGMSDao {
 		    
 		    return current_capacity>=total_capacity;
 	    } catch(SQLException sqlExcep) {
-		       System.out.println(sqlExcep);
+//		       System.out.println(sqlExcep);
 	    } catch(Exception excep) {
 	           excep.printStackTrace();
 	    }
@@ -212,7 +212,7 @@ public class CustomerGMSDao {
 		    
 		    
 	    } catch(SQLException sqlExcep) {
-		       System.out.println(sqlExcep);
+//		       System.out.println(sqlExcep);
 	    } catch(Exception excep) {
 	           excep.printStackTrace();
 	    }
@@ -266,7 +266,7 @@ public class CustomerGMSDao {
 		    return flag;
 			
 	    } catch(SQLException sqlExcep) {
-		       System.out.println(sqlExcep);
+//		       System.out.println(sqlExcep);
 	    } catch(Exception excep) {
 	           excep.printStackTrace();
 	    }

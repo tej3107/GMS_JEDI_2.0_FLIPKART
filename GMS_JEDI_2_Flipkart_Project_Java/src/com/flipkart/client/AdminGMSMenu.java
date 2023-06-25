@@ -39,7 +39,7 @@ public class AdminGMSMenu {
 			System.out.println("\nMenu:-");
 			System.out.println(
 					"\t1.View All Gym Owner\n"
-					+ "\t2.View All Gymnasius\n"
+					+ "\t2.View All Gymnasiums\n"
 					+ "\t3.View Gym Owner pending requests \n"
 					+ "\t4.View Gymnasiums pending requests \n"
 					+ "\t5.Approve Gym Owner request \n"
@@ -55,42 +55,45 @@ public class AdminGMSMenu {
 			switch (choice) {
 			// Case statements
 			case 1:
-				System.out.println("\n\tID\tGymOwner Name");
+//				System.out.println("\n\tID\tGymOwner Name");
 				adminService.seeAllGymOwner();
 				break;
 			case 2:
-				System.out.println("\n\tID\tGymnasium Name");
+//				System.out.println("\n\tID\tGymnasium Name");
 				adminService.seeAllGyms();
 				break;
 			case 3:
-				System.out.println("\n\tID\tGymOwner Name");
+//				System.out.println("\n\tID\tGymOwner Name");
 				adminService.seePendingGymOwnerRequest();
 				break;
 			case 4:
-				System.out.println("\n\tID\tGymnasium Name");
+//				System.out.println("\n\tID\tGymnasium Name");
 				adminService.seePendingGymRequest();
 				break;
 			case 5:
-				System.out.println("\n\tID\tGymOwner Name");
-				adminService.seePendingGymOwnerRequest();
-				approveGymOwner(in, adminService);
+//				System.out.println("\n\tID\tGymOwner Name");
+				if(adminService.seePendingGymOwnerRequest()) {
+				approveGymOwner(in, adminService);}
 				break;
 			case 6:
-				System.out.println("\n\tID\tGymnasium Name");
-				adminService.seePendingGymRequest();
-				approveGym(in, adminService);
+//				System.out.println("\n\tID\tGymnasium Name");
+				if(adminService.seePendingGymRequest()) {
+				approveGym(in, adminService);}
 				break;
 			case 7:
 				adminService.approveAllOwnerRequest();
+				System.out.println("\nAll gym owner pending requests approved");
 				break;	
 			case 8:
 				adminService.approveAllGymRequest();
+				System.out.println("\nAll gym pending requests approved");
 				break;
 			case 9:
 				adminService.seeAllGymOwner();
 				System.out.println("$ Enter Gym Owner Id to Block:   ");
 				String gynOwnerId = in.next();
 				adminService.blockGymOwner(gynOwnerId);
+				System.out.println("Gym Owner Blocked Sucessfully");
 				break;
 			case 10:
 				System.out.println("Exit!!");

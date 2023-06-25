@@ -45,7 +45,7 @@ public class UserGMSDao {
 		   else return exitCode;
 		   
 	   } catch(SQLException sqlExcep) {
-		      System.out.println(sqlExcep);
+//		      System.out.println(sqlExcep);
 	   } catch(Exception excep) {
 	      excep.printStackTrace();
 	   }

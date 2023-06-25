@@ -11,9 +11,9 @@ public interface AdminGMSInterface {
 	
 	public void seeAllGyms();
 	
-	public void seePendingGymOwnerRequest();
+	public boolean seePendingGymOwnerRequest();
 	
-	public void seePendingGymRequest();
+	public boolean seePendingGymRequest();
 	
 	public boolean approveSingleOwnerRequest(String requestId);
 	
