@@ -12,9 +12,18 @@ import com.flipkart.bean.*;
 
 public class CustomerGMSDao {
 	
-	
+	/**
+	 * Registers a new customer in the database.
+	 *
+	 * @param user     The user information.
+	 * @param customer The customer information.
+	 */
 	public void registerCustomer(User user, Customer customer) {
-//		System.out.println("Connecting to database...");
+		// Connect to the database and register the customer
+		// Retrieve customer ID and register in the Customer schema
+		// Register in the CustomerRegistration schema
+		// Register in the User schema
+		// Handle any exceptions that occur
 		
 		Connection conn = null;
 		PreparedStatement stmt = null;
@@ -76,8 +85,13 @@ public class CustomerGMSDao {
 	    }
 	}
 	
+	/**
+	 * Fetches the list of all gyms from the database.
+	 */
 	public void fetchGymList() {
-//		System.out.println("Connecting to database...");
+		// Connect to the database and fetch the list of all gyms
+		// Print the fetched gym details
+		// Handle any exceptions that occur
 		
 		Connection conn = null;
 		PreparedStatement stmt = null;
@@ -98,8 +112,15 @@ public class CustomerGMSDao {
 	    }
 	}
 	
+	/**
+	 * Fetches the list of available slots for a given gym from the database.
+	 *
+	 * @param gymId The ID of the gym.
+	 */
 	public void fetchSlotList(String gymId) {
-//		System.out.println("Connecting to database...");
+		// Connect to the database and fetch the list of slots for the specified gym
+		// Print the fetched slot details
+		// Handle any exceptions that occur
 		
 		Connection conn = null;
 		PreparedStatement stmt = null;
@@ -123,8 +144,18 @@ public class CustomerGMSDao {
 	    }
 	}
 	
+	
+	/**
+	 * Books a slot for a customer in the database.
+	 *
+	 * @param slotId     The ID of the slot to book.
+	 * @param customerId The ID of the customer.
+	 */
 	public void bookSlots(String slotId,String customerId) {
-//		System.out.println("Connecting to database...");
+		// Connect to the database and book the slot for the customer
+		// Retrieve necessary details from the slot
+		// Insert the booking details into the database
+		// Handle any exceptions that occur
 		   
 		Connection conn = null;
 		PreparedStatement stmt = null;
@@ -156,8 +187,18 @@ public class CustomerGMSDao {
 	    return;
 	}
 	
+	/**
+	 * Checks if a slot is full based on its capacity.
+	 *
+	 * @param slotId The ID of the slot to check.
+	 * @return true if the slot is full, false otherwise.
+	 */
 	public boolean isFull(String slotId) {
-//		System.out.println("Connecting to database...");
+		// Connect to the database and check the current capacity of the slot
+		// Retrieve the total capacity of the slot
+		// Return whether the current capacity is equal to or greater than the total capacity
+		// Handle any exceptions that occur
+		
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		
@@ -184,8 +225,16 @@ public class CustomerGMSDao {
 		return false;
 	}
 	
+	/**
+	 * Fetches the list of gyms booked by a customer from the database.
+	 *
+	 * @param custId The ID of the customer.
+	 */
 	public void bookedGymList(String custId) {
-//		System.out.println("Connecting to database...");
+		// Connect to the database and fetch the list of slots booked by the customer
+		// Print the fetched slot details
+		// Handle any exceptions that occur
+		
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		
@@ -219,9 +268,22 @@ public class CustomerGMSDao {
 		return;
 	}
 	
+	
+	/**
+	 * Changes the booked slot for a customer in the database.
+	 *
+	 * @param slotId     The ID of the new slot to book.
+	 * @param customerId The ID of the customer.
+	 * @return true if the slot is changed successfully, false otherwise.
+	 */
 	public boolean changeGymSlot(String slotId,String customerId) {
+		// Connect to the database and retrieve the details of the new slot
+		// Retrieve the day and times of the new slot
+		// Retrieve the current bookings of the customer on the same day and times
+		// Delete the existing bookings and insert the new booking
+		// Return whether the slot was changed successfully
+		// Handle any exceptions that occur
 		
-//		System.out.println("Connecting to database...");
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		

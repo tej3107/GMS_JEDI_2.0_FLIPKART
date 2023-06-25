@@ -1,5 +1,5 @@
 /**
- * 
+ * DAO class for User management system.
  */
 package com.flipkart.dao;
 import java.sql.Connection;
@@ -13,26 +13,25 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
- * 
+ * DAO class that provides database operations for User management system.
  */
 public class UserGMSDao {
+	
 	/**
-	 * @param args
-	 */
-		   
+	 * Authenticates a user by checking their username and password.
+	 *
+	 * @param userName The username of the user.
+	 * @param password The password of the user.
+	 * @return The exit code: 0 for admin, 1 for customer, 2 for gym owner, 3 for trainer, 4 for invalid credentials.
+	 */	   
    public int authenticateUser(String userName, String password) {
 	   int exitCode = 4;
-//	   System.out.println("Connecting to database...");
 	   
 	   Connection conn = null;
 	   PreparedStatement stmt = null;
 	   
 	   try {
-		   
-//		   Class.forName("com.mysql.cj.jdbc.Driver");
-//		   conn = DriverManager.getConnection(DB_URL, USER, PASS);
 		   conn = DBUtils.getConnection();
-//		   String sql = "Select * From User Where UserId = (?)";
 		   
 		   stmt = conn.prepareStatement(SQLConstants.SQL_AUTH_QUERY);
 		   stmt.setString(1, userName); 

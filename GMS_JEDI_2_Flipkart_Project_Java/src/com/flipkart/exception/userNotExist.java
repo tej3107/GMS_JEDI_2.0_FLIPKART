@@ -1,29 +1,27 @@
 package com.flipkart.exception;
 
 /**
- * Exception to check if course is already registered by student
- * @author JEDI-03
- *
+ * Exception to check if a user does not exist or if the provided username and password do not match.
  */
-public class userNotExist extends Exception{
+public class userNotExist extends Exception {
 	
 	private static final long serialVersionUID = 1L;
 	
 	/**
-	 * Constructor
-	 * @param courseCode
+	 * Constructor for userNotExist.
 	 */
 	public userNotExist() {
 		
 	}
 	
-	
 	/**
-	 * Message returned when exception is thrown
+	 * Returns the error message when the exception is thrown.
+	 * 
+	 * @return The error message indicating that the username or password did not match.
 	 */
 	@Override
 	public String getMessage() {
-		return "Username or Password did'nt match ";
+		return "Username or password did not match.";
 	}
 
 }

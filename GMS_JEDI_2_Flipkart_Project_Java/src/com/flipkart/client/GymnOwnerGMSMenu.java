@@ -1,17 +1,29 @@
+/**
+ * Class representing the Gym Owner's menu in the Gym Management System.
+ */
 package com.flipkart.client;
-import com.flipkart.bean.*;
-import java.util.StringTokenizer;  
 
-import java.util.*;
+import java.util.ArrayList;
 import java.util.Scanner;
-import com.flipkart.service.*;
-import com.flipkart.bean.*;
+import java.util.StringTokenizer;
 
+import com.flipkart.bean.GymOwner;
+import com.flipkart.bean.Gymnasium;
+import com.flipkart.bean.User;
+import com.flipkart.service.GymOwnerService;
+
+/**
+ * Class representing the Gym Owner's menu in the Gym Management System.
+ */
 public class GymnOwnerGMSMenu {
 	GymOwnerService ownerService = new GymOwnerService();
 	
+	/**
+	 * Registers a new Gym Owner.
+	 *
+	 * @param in The Scanner object for user input.
+	 */
 	public void registerGymOwner(Scanner in) {
-//		System.out.println("Welcome to FlipFit Gymnasium Application");
 		System.out.println("Please Enter your Details:-");
 		System.out.print("$ Enter Username: ");
 		String username = in.next();
@@ -33,7 +45,7 @@ public class GymnOwnerGMSMenu {
 		String gstNumber = in.next();
 		System.out.print("Enter your Password: ");
 		String password = in.next();
-		User user =new User(username,password,3);
+		User user = new User(username, password, 3);
 		
 		GymOwner owner = new GymOwner();
 		owner.setName(name);
@@ -45,18 +57,33 @@ public class GymnOwnerGMSMenu {
 		owner.setGstNumber(gstNumber);
 		ownerService.registerGymOwner(user, owner);
 		
-		
-		gymOwnerActionPage(in,user);
+		gymOwnerActionPage(in, user);
 	}
 	
+	/**
+	 * Fetches the details of a Gym Owner.
+	 *
+	 * @param ownerId The ID of the Gym Owner.
+	 */
 	public void fetchOwnerDetails(String ownerId) {
 		ownerService.fetchOwnerDetails(ownerId);
 	}
 	
+	/**
+	 * Fetches the Gyms owned by a Gym Owner.
+	 *
+	 * @param ownerId The ID of the Gym Owner.
+	 */
 	public void fetchMyGyms(String ownerId) {
 		ownerService.fetchMyGyms(ownerId);
 	}
 	
+	/**
+	 * Registers a new Gym for a Gym Owner.
+	 *
+	 * @param in       The Scanner object for user input.
+	 * @param ownerId  The ID of the Gym Owner.
+	 */
 	public void registerGym(Scanner in, String ownerId) {
 		Gymnasium gym = new Gymnasium();
 		
@@ -76,7 +103,6 @@ public class GymnOwnerGMSMenu {
 		System.out.print("$ Enter capacity of slot: ");
 		int capacity = in.nextInt();
 		
-		// ==========================================================================================================================================
 		System.out.println("$ Enter time slot in sequence giving space (Railways time zone, No character allowed): ");
 		
 		String timeline = in.nextLine();
@@ -85,12 +111,10 @@ public class GymnOwnerGMSMenu {
 		ArrayList<Integer> slotAvailable = new ArrayList<Integer>();
 		
 		StringTokenizer st = new StringTokenizer(timeline);  
-	     while (st.hasMoreTokens()) { 
-	         slotAvailable.add(Integer.parseInt(st.nextToken()));  
-	     }  
+	    while (st.hasMoreTokens()) { 
+	        slotAvailable.add(Integer.parseInt(st.nextToken()));  
+	    }  
 	     
-		// ==========================================================================================================================================
-		
 		gym.setOwnerId(ownerId);
 		gym.setName(name);
 		gym.setAddress(address);
@@ -100,16 +124,21 @@ public class GymnOwnerGMSMenu {
 		ownerService.addGymDetails(gym, slotAvailable, capacity);
 	}
 
+	/**
+	 * Displays the Gym Owner's menu and handles the user's actions.
+	 *
+	 * @param in   The Scanner object for user input.
+	 * @param user The User object representing the Gym Owner.
+	 */
 	public void gymOwnerActionPage(Scanner in, User user) {
-//		System.out.println("Welcome to FlipFit Gymnasium Application");
 		int choice = 0;
 		
-		if(!ownerService.isOwnerApproved(user.getUserName())) {
+		if (!ownerService.isOwnerApproved(user.getUserName())) {
 			System.out.println("Not Approved!!");
 			choice = 4;
 		}
 		
-		while(choice != 4) {
+		while (choice != 4) {
 			System.out.println("\nMenu:-");
 			System.out.println("\t1.Get Details \n\t2.Add Gym \n\t3.View My Gyms \n\t4.Return");
 			
@@ -117,7 +146,6 @@ public class GymnOwnerGMSMenu {
 			choice = in.nextInt();
 			System.out.println("\n");
 			switch (choice) {
-				// Case statements	
 				case 1:
 					fetchOwnerDetails(user.getUserName());
 					break;

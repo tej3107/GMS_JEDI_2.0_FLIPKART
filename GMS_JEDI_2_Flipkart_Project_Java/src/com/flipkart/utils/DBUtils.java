@@ -1,5 +1,5 @@
 /**
- * 
+ * Utility class for managing database connections.
  */
 package com.flipkart.utils;
 
@@ -15,6 +15,11 @@ public class DBUtils {
 	
 	private static Connection connection = null;
 	
+	/**
+	 * Retrieves a database connection.
+	 * 
+	 * @return The database connection.
+	 */
 	public static Connection getConnection() {
 		
         if (connection != null)
@@ -41,8 +46,5 @@ public class DBUtils {
             }
             return connection;
         }
-
     }
-
-
 }

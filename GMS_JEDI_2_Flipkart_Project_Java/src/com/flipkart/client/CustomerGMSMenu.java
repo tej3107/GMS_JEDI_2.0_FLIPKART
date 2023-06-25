@@ -1,17 +1,27 @@
+/**
+ * Menu class for the customer interface of the Gym Management System.
+ */
 package com.flipkart.client;
-import java.util.*;
-import java.util.Scanner;
-import com.flipkart.service.*;
-import com.flipkart.bean.*;
 
 import java.util.Scanner;
 
+import com.flipkart.bean.Customer;
+import com.flipkart.bean.User;
+import com.flipkart.service.CustomerService;
+
+/**
+ * Menu class that provides the customer interface for managing the Gym Management System.
+ */
 public class CustomerGMSMenu {
+	
 	CustomerService customerService = new CustomerService();
 	
+	/**
+	 * Registers a new customer by collecting personal details.
+	 *
+	 * @param in The Scanner object for user input.
+	 */
 	public void registerCustomer(Scanner in) {
-//		System.out.println("Welcome to FlipFit Gymnasium Application");
-		
 		System.out.println("Add Personal Details:-");
 		System.out.print("$ Enter Username: ");
 		String username = in.next();
@@ -23,36 +33,29 @@ public class CustomerGMSMenu {
 		String email = in.next();
 		System.out.print("$ Enter your address: ");
 		String address = in.next();
-//		System.out.print("Enter your aadhaarNumber: ");
-//		String aadhaarNumber = in.next();
-//		System.out.print("Enter your panNumber: ");
-//		String panNumber = in.next();
-//		System.out.print("Enter your DOB: ");
-//		String DOB = in.next();
-//		System.out.print("Enter your gstNumber: ");
-//		String gstNumber = in.next();
 		System.out.print("$ Enter your Password: ");
 		String password = in.next();
-		User user =new User(username,password,3);
-
-		Customer customer = new Customer();
 		
+		User user = new User(username, password, 3);
+		Customer customer = new Customer();
 		customer.setName(name);
 		customer.setMobile(mobile);
 		customer.setEmail(email);
 		customer.setAddress(address);
 		
 		customerService.registerCustomer(user, customer);
-		customerActionPage(in,user);
+		customerActionPage(in, user);
 	}
 	
-	
+	/**
+	 * Displays the gym catalog and allows the customer to book a slot.
+	 *
+	 * @param in   The Scanner object for user input.
+	 * @param user The User object representing the customer.
+	 */
 	public void viewCatalog(Scanner in, User user) {
-//		System.out.println("\nWelcome to FlipFit Gymnasium Application");
 		System.out.println("Book a Slot*\nMenu:-");
 		customerService.fetchGymList();
-		
-		// ==========================================================================================================================================
 		
 		System.out.print("$ Enter your Gym ID: ");
 		String gymId = in.next();
@@ -61,12 +64,10 @@ public class CustomerGMSMenu {
 		System.out.print("$ Enter your Slot ID: ");
 		String slotId = in.next();
 		
-		// ==========================================================================================================================================
-		
 		int response = customerService.bookSlots(slotId, user.getUserName());
 		switch (response) {
 			case 0:
-				System.out.println("Changed your slot time with new gym loaction");
+				System.out.println("Changed your slot time with new gym location");
 				break;
 			case 1:
 				System.out.println("No slots left");
@@ -74,22 +75,25 @@ public class CustomerGMSMenu {
 			case 2:
 				System.out.println("Slot is booked");
 				break;
-			// Default case statement
 			default:
 				System.out.println("Incorrect choice!!! Please try again!!!");
 		}
-		
 	}
-
 	
+	/**
+	 * Displays the customer action page and handles user input for various actions.
+	 *
+	 * @param in   The Scanner object for user input.
+	 * @param user The User object representing the customer.
+	 */
 	public void customerActionPage(Scanner in, User user) {
 		int choice = 0;
 		
-		while(choice != 3) {
-//			System.out.println("Welcome to FlipFit Gymnasium Application");
-			
+		while (choice != 3) {
 			System.out.println("\nMenu:-");
-			System.out.println("\t1.View Gyms and Book Gym \n\t2.View Booked Slots\n\t3.Exit");
+			System.out.println("\t1.View Gyms and Book Gym\n" 
+							 + "\t2.View Booked Slots\n" 
+							 + "\t3.Exit");
 			System.out.print("$ Enter your choice: ");
 			choice = in.nextInt();
 			
@@ -98,7 +102,7 @@ public class CustomerGMSMenu {
 					viewCatalog(in, user);
 					break;
 				case 2:
-					customerService.bookedSlots(user.getUserName()); //empty functions
+					customerService.bookedSlots(user.getUserName());
 					break;
 				case 3:
 					break;
@@ -106,5 +110,5 @@ public class CustomerGMSMenu {
 					System.out.println("Incorrect choice!!! Please try again!!!");
 			}
 		}
-	}	
+	}
 }

@@ -1,5 +1,5 @@
 /**
- * 
+ * DAO class for Gym Owner management system.
  */
 package com.flipkart.dao;
 import java.sql.Connection;
@@ -12,15 +12,21 @@ import java.util.*;
 
 import com.flipkart.constants.SQLConstants;
 import com.flipkart.utils.DBUtils;
+
 /**
- * 
+ * DAO class that provides database operations for Gym Owner management system.
  */
 public class GymOwnerGMSDao {
 	
 	
-	
+	/**
+	 * Registers a new gym owner in the database.
+	 *
+	 * @param user  The user information.
+	 * @param owner The gym owner information.
+	 */
 	public void registerGymOwner(User user, GymOwner owner) {
-//		System.out.println("Connecting to database...");
+		
 		
 		Connection conn = null;
 		PreparedStatement stmt = null;
@@ -86,8 +92,12 @@ public class GymOwnerGMSDao {
 	}
 	
 	
+	/**
+	 * Fetches the details of a gym owner from the database.
+	 *
+	 * @param userName The username of the gym owner.
+	 */
 	public void fetchOwnerDetails(String userName) {
-//		System.out.println("Connecting to database...");
 		
 		Connection conn = null;
 		PreparedStatement stmt = null;
@@ -110,8 +120,12 @@ public class GymOwnerGMSDao {
 	    }
 	}
 	
+	/**
+	 * Fetches the list of gyms owned by a gym owner from the database.
+	 *
+	 * @param userName The username of the gym owner.
+	 */
 	public void fetchMyGyms(String userName) {
-//		System.out.println("Connecting to database...");
 		   
 		Connection conn = null;
 		PreparedStatement stmt = null;
@@ -134,8 +148,13 @@ public class GymOwnerGMSDao {
 	    }
 	}
 	
+	/**
+	 * Checks if a gym owner is approved based on their username.
+	 *
+	 * @param userName The username of the gym owner.
+	 * @return true if the gym owner is approved, false otherwise.
+	 */
 	public boolean isOwnerApproved(String userName) {
-//		System.out.println("Connecting to database...");
 		   
 		Connection conn = null;
 		PreparedStatement stmt = null;
@@ -157,9 +176,14 @@ public class GymOwnerGMSDao {
 	    return false;
 	}
 	
-	
+	/**
+	 * Adds gym details to the database.
+	 *
+	 * @param gym             The gymnasium information.
+	 * @param slotAvailable   The list of available slots.
+	 * @param capacity        The capacity of the gym.
+	 */
 	public void addGymDetails(Gymnasium gym, ArrayList<Integer> slotAvailable, int capacity) {
-//		System.out.println("Connecting to database...");
 		   
 		Connection conn = null;
 		PreparedStatement stmt = null;

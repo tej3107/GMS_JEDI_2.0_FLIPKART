@@ -1,22 +1,28 @@
 /**
- * 
+ * Main application class for the Gym Management System.
  */
 package com.flipkart.client;
+
 import java.time.LocalDate;
+import java.util.InputMismatchException;
+import java.util.Scanner;
 
-import java.util.*;
+import com.flipkart.bean.User;
+import com.flipkart.exception.incorrectDataType;
+import com.flipkart.exception.userNotExist;
+import com.flipkart.service.UserService;
+import com.flipkart.service.UserServiceInterface;
 
-import com.flipkart.bean.*;
-import com.flipkart.exception.*;
-import com.flipkart.service.*;
-import com.flipkart.exception.*;
-import java.sql.SQLException;
 /**
- * 
+ * Main class that serves as the entry point for the Gym Management System application.
  */
 public class GMSApplicationClient {
+	
 	/**
-	 * @param args
+	 * The main method that starts the Gym Management System application.
+	 *
+	 * @param args The command line arguments.
+	 * @throws incorrectDataType Thrown if an incorrect data type is entered.
 	 */
 	public static void main(String args[]) throws incorrectDataType {
 	    System.out.println("\nWelcome to FlipFit Gymnasium Application");
@@ -26,7 +32,10 @@ public class GMSApplicationClient {
 	    while (choice != 4) {
 
 	        System.out.println("\nMenu:-");
-	        System.out.println("\t1. Login \n\t2. GymOwner Registration \n\t3. Customer Registration \n\t4. Exit\n");
+	        System.out.println("\t1. Login\n" 
+	        				 + "\t2. GymOwner Registration\n" 
+	        				 + "\t3. Customer Registration\n" 
+	        				 + "\t4. Exit\n");
 
 	        System.out.print("$ Enter your choice: ");
 
@@ -63,19 +72,19 @@ public class GMSApplicationClient {
 	        catch (userNotExist e) {
 	            System.out.println(e.getMessage());
 	        }
-//	        catch (SQLException e) {
-//	            System.out.println(e.getMessage());
-//	        }
 	        
 	    }
 	    in.close();
 	}
 
 
-	
+	/**
+	 * Opens the login menu and handles the user login process.
+	 *
+	 * @param in The Scanner object for user input.
+	 * @throws userNotExist       Thrown if the user does not exist.
+	 */
 	public static void openLoginMenu(Scanner in) throws userNotExist {
-//		System.out.println("\n\nWelcome to FlipFit Gymnasium Application");
-		
 		System.out.println("\nEnter your login credentials:-");
 		
 		System.out.print("$ UserId: ");
@@ -88,34 +97,19 @@ public class GMSApplicationClient {
 		User user = new User(userName, password, role);
 		UserServiceInterface authentication = new UserService();
 		
-//		try{ 
 		role = authentication.authenticateUser(user);
-//			throw new UserNotApprovedException(user);
-//		}catch (UserNotApprovedException e){
-//			System.out.println("Exception error");
-//			System.out.println(e.getMessage());
-////			System.out.println(e.getMessage());
-//		}
-		if(role != 4) System.out.println("\nlogged in Successfully!!!\n\n");
-		else {
-			throw new userNotExist(); 
-			
-			}
+		
+		if (role != 4) {
+			System.out.println("\nlogged in Successfully!!!\n\n");
+		} else {
+			throw new userNotExist();
+		}
 		
 		LocalDate localDate = LocalDate.now();
-
-//		System.out.println("localDate.getYear(): " + localDate.getYear());
-//		System.out.println("localDate.getMonth(): " + localDate.getMonth());
-//		System.out.println("localDate.getDayOfWeek(): " + localDate.getDayOfWeek());
-//		System.out.println("localDate.getDayOfMonth(): " + localDate.getDayOfMonth());
-//		System.out.println("localDate.getDayOfYear(): " + localDate.getDayOfYear());
+		System.out.println(localDate.getDayOfMonth() + "/" + localDate.getMonth() + "/" + localDate.getYear());
+		System.out.println("Hello!! " + userName + "\nWelcome to GMS");
 		
-		System.out.println(localDate.getDayOfMonth()+"/"+localDate.getMonth()+"/"+localDate.getYear());
-		
-		System.out.println("Hello!! "+userName+"\nWelocome to GMS");
-		
-			
-		switch(role) {
+		switch (role) {
 			case 1: 
 				AdminGMSMenu admin = new AdminGMSMenu();
 				admin.adminActionPage(in);

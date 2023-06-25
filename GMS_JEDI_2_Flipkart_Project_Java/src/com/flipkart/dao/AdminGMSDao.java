@@ -11,8 +11,8 @@ import com.flipkart.utils.DBUtils;
 
 public class AdminGMSDao {
 	/**
-	 * @param args
-	 */
+	* Fetches details of all gym owners from the database.
+	*/
    
    public void fetchGymOwnerDetails() {
 //	   System.out.println("Connecting to database...");
@@ -45,7 +45,9 @@ public class AdminGMSDao {
    }
    
    
-
+   /**
+    * Fetches details of all gymnasiums from the database.
+    */
    public void fetchGymnasiumDetails() {
 //	   System.out.println("Connecting to database...");
 	   
@@ -76,7 +78,11 @@ public class AdminGMSDao {
    }
    
    
-
+   /**
+   * Fetches all pending gym owner requests from the database.
+   * 
+   * @return true if at least one pending gym owner request is present, false otherwise.
+   */
    public boolean fetchPedningGymOwnerRequests() {
 	    // System.out.println("Connecting to database...");
 
@@ -110,7 +116,11 @@ public class AdminGMSDao {
 
    
    
-   
+   /**
+    * Fetches all pending gymnasium requests from the database.
+    * 
+    * @return true if at least one pending gymnasium request is present, false otherwise.
+    */
    public boolean fetchPendingGymnasiumRequest() {
 	    // System.out.println("Connecting to database...");
 
@@ -143,7 +153,9 @@ public class AdminGMSDao {
 	}
 
    
-   
+   /**
+    * Updates all pending gym owner requests as approved in the database.
+    */
    public void updateAllPendingGymOwnerRequests() {
 //	   System.out.println("Connecting to database...");
 	   
@@ -163,7 +175,9 @@ public class AdminGMSDao {
    }
 
    
-   
+   /**
+    * Updates all pending gymnasium requests as approved in the database.
+    */
    public void updateAllPendingGymnasiumRequests() {
 //	   System.out.println("Connecting to database...");
 	   
@@ -183,7 +197,11 @@ public class AdminGMSDao {
    }
    
    
-   
+   /**
+    * Updates a single gym owner request as approved in the database.
+    * 
+    * @param id the ID of the gym owner request to be updated.
+    */
    public void updateSingleGymOwnerRequests(String id) {
 //	   System.out.println("Connecting to database...");
 	   
@@ -204,7 +222,11 @@ public class AdminGMSDao {
    }
    
    
-   
+   /**
+    * Updates a single gymnasium request as approved in the database.
+    * 
+    * @param id the ID of the gymnasium request to be updated.
+    */
    public void updateSingleGymnasiumRequests(String id) {
 //	   System.out.println("Connecting to database...");
 	   
@@ -224,6 +246,12 @@ public class AdminGMSDao {
 	   } 
    }
    
+   
+   /**
+    * Block a gym owner by rejecting their requests in the database.
+    * 
+    * @param gymOwnerId the ID of the gym owner to be Block.
+    */
    public void unApproveGymOwner(String gymOwnerId) {
 //	   System.out.println("Connecting to database...");
 	   

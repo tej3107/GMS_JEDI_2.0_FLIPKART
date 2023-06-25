@@ -1,12 +1,12 @@
-//package com.flipkart.exception;
-
+/**
+ * Exception to check if a user is approved by the administration.
+ */
 package com.flipkart.exception;
 
 import com.flipkart.bean.User;
 
 /**
- * Exception to check if user is approved by administration
- *
+ * Exception to check if a user is approved by the administration.
  */
 public class UserNotApprovedException extends Exception{
 	
@@ -14,17 +14,19 @@ public class UserNotApprovedException extends Exception{
 	private User userId;
 	
 	/**
-	 * Constructor
-	 * @param user
+	 * Constructor for UserNotApprovedException.
+	 * 
+	 * @param user The User object representing the user.
 	 */
 	public UserNotApprovedException(User user) {
 		this.userId = user;
-		System.out.println("user not found from exception\n");
+		System.out.println("User not found from exception\n");
 	}
 
 	/**
-	 * Getter for userId
-	 * @return
+	 * Getter for the user ID.
+	 * 
+	 * @return The User object representing the user.
 	 */
 	public User getUserId() {
 		return userId;
